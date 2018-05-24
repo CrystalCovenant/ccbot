@@ -102,9 +102,13 @@ client.on('message', msg => {
       //remove
       msg.member.removeRole(role).catch(console.error);
       logChannel.send('<@'+msg.member.id + '> removed Operator role');
+      msg.channel.send('Operator role removed').then(function(message){ message.delete(5000); });
+      msg.delete(5000);
     } else {
       msg.member.addRole(role).catch(console.error);
       logChannel.send('<@'+msg.member.id + '> added Operator role');
+      msg.channel.send('Operator role added').then(function(message){ message.delete(5000); });
+      msg.delete(5000);
       //add
     }
   }
@@ -115,9 +119,13 @@ client.on('message', msg => {
       //remove
       msg.member.removeRole(role).catch(console.error);
       logChannel.send('<@'+msg.member.id + '> removed Agent role');
+      msg.channel.send('Agent role removed').then(function(message){ message.delete(5000); });
+      msg.delete(5000);
     } else {
       msg.member.addRole(role).catch(console.error);
       logChannel.send('<@'+msg.member.id + '> added Agent role');
+      msg.channel.send('Agent role added').then(function(message){ message.delete(5000); });
+      msg.delete(5000);
       //add
     }
   }
@@ -128,9 +136,13 @@ client.on('message', msg => {
       //remove
       msg.member.removeRole(role).catch(console.error);
       logChannel.send('<@'+msg.member.id + '> removed Guardian role');
+      msg.channel.send('Guardian role removed').then(function(message){ message.delete(5000); });
+      msg.delete(5000);
     } else {
       msg.member.addRole(role).catch(console.error);
       logChannel.send('<@'+msg.member.id + '> added Guardian role');
+      msg.channel.send('Guardian role added').then(function(message){ message.delete(5000); });
+      msg.delete(5000);
       //add
     }
   }
@@ -141,9 +153,13 @@ client.on('message', msg => {
       //remove
       msg.member.removeRole(role).catch(console.error);
       logChannel.send('<@'+msg.member.id + '> removed Monster Hunter role');
+      msg.channel.send('Monster Hunter role removed').then(function(message){ message.delete(5000); });
+      msg.delete(5000);
     } else {
       msg.member.addRole(role).catch(console.error);
       logChannel.send('<@'+msg.member.id + '> added Monster Hunter role');
+      msg.channel.send('Monster Hunter role added').then(function(message){ message.delete(5000); });
+      msg.delete(5000);
       //add
     }
   }
