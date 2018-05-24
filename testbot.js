@@ -96,12 +96,6 @@ client.on('message', msg => {
     msg.channel.send(`${tim3}${tim4}`);
   }
 
-  if (msg.channel.name != 'test') return;
-
-  // msg.reply(msg.content);
-
-  
-
   if(msg.content == '-operator'){
     var role = msg.guild.roles.find('name', 'Operator');
     if (msg.member.roles.has(role.id)){
@@ -153,6 +147,13 @@ client.on('message', msg => {
       //add
     }
   }
+
+  if (msg.channel.name != 'test') return;
+
+  // Testing content //
+  
+
+  
 
   
   // msg.channel.send('Test reply');
