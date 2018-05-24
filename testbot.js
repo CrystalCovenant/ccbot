@@ -87,10 +87,6 @@ client.on('message', msg => {
     }
   }
 
-  if (msg.channel.name != 'test') return;
-
-  // msg.reply(msg.content);
-
   if (msg.content == '-tim'){
     var tim1 = client.emojis.find('name', 'tim1');
     var tim2 = client.emojis.find('name', 'tim2');
@@ -99,6 +95,12 @@ client.on('message', msg => {
     msg.channel.send(`${tim1}${tim2}`);
     msg.channel.send(`${tim3}${tim4}`);
   }
+
+  if (msg.channel.name != 'test') return;
+
+  // msg.reply(msg.content);
+
+  
 
   if(msg.content == '-operator'){
     var role = msg.guild.roles.find('name', 'Operator');
