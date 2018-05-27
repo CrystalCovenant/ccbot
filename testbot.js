@@ -70,13 +70,13 @@ client.on('message', msg => {
     if (msg.member.roles.find('name', 'Admin')){
       var guestChannel = client.channels.get('143088944643440641');
       guestChannel.createInvite({
-        maxAge: 900,
+        maxAge: 0,
         maxUsers: 1,
         unique: true
       })
       .then(function(invite){
         msg.channel.send(invite.url).then(function(newMessage){
-          newMessage.delete(1000 * 900);
+          // newMessage.delete(1000 * 900);
         });
         
         logChannel.send('<@'+msg.member.id + '> has created a member invite link on channel: '+msg.channel.name);
