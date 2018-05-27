@@ -212,6 +212,10 @@ client.on('guildMemberAdd', member => {
   }, 1500);
 });
 
+client.on('guildMemberRemove', member => {
+  logChannel.send('<@'+member.id + '> has left the server');
+});
+
 client.login('NDQ4OTY3MjQ1NTI4NDMyNjQx.Ded1hw.e5QHDpzY_T6GxJ208rewtvjGk60');
 
 
