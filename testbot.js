@@ -201,7 +201,7 @@ client.on('voiceStateUpdate', (oldMember, member) => {
 client.on('guildMemberAdd', member => {
   setTimeout(function(){
 
-    if (member.roles.array().length == 1){
+    if (member.roles.array().length == 0){
       var guardian = client.guilds.get('143058431488557056').roles.find('name', 'Guardian');
       var core = client.guilds.get('143058431488557056').roles.find('name', 'Core Community Member');
       var operator = client.guilds.get('143058431488557056').roles.find('name', 'Operator');
