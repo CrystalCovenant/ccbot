@@ -192,8 +192,8 @@ client.on('message', msg => {
 
 client.on('voiceStateUpdate', (oldMember, member) => {
   var role = client.guilds.get('143058431488557056').roles.find('name', 'Guest');
-  if (member.voiceChannelID == '447233002800676864' && member.joinedTimestamp > Date.now() - 5000 && oldMember.voiceChannelID == ''){
-    member.setRoles([role]).catch(console.error);
+  if (member.voiceChannelID == '447233002800676864' && member.joinedTimestamp > Date.now() - 3000){
+    member.addRole(role).catch(console.error);
     logChannel.send('<@'+member.id + '> has joined the server as a guest');
   }
 });
@@ -209,7 +209,7 @@ client.on('guildMemberAdd', member => {
       member.setRoles([guardian, core, operator, hunter]);
       logChannel.send('<@'+member.id + '> has joined the server as a member');
     }
-  }, 3000);
+  }, 10000);
 });
 
 client.on('guildMemberRemove', member => {
