@@ -191,8 +191,8 @@ client.on('message', msg => {
 });
 
 client.on('voiceStateUpdate', (oldMember, member) => {
-  if (member.voiceChannelID == '447233002800676864' && member.joinedTimestamp > Date.now() - 5000){
-    var role = client.guilds.get('143058431488557056').roles.find('name', 'Guest');
+  var role = client.guilds.get('143058431488557056').roles.find('name', 'Guest');
+  if (member.voiceChannelID == '447233002800676864' && member.joinedTimestamp > Date.now() - 5000 && oldMember.voiceChannelID == ''){
     member.setRoles([role]).catch(console.error);
     logChannel.send('<@'+member.id + '> has joined the server as a guest');
   }
@@ -200,8 +200,7 @@ client.on('voiceStateUpdate', (oldMember, member) => {
 
 client.on('guildMemberAdd', member => {
   setTimeout(function(){
-
-    if (member.roles.array().length == 0){
+    if (member.roles.array().length == 1){
       var guardian = client.guilds.get('143058431488557056').roles.find('name', 'Guardian');
       var core = client.guilds.get('143058431488557056').roles.find('name', 'Core Community Member');
       var operator = client.guilds.get('143058431488557056').roles.find('name', 'Operator');
