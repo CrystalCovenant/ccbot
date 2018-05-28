@@ -199,7 +199,7 @@ client.on('voiceStateUpdate', (oldMember, member) => {
 });
 
 client.on('guildMemberAdd', member => {
-  setTimeout(function(){
+  // setTimeout(function(){
 
   //   if (member.roles.array().length == 1){
   //     var guardian = client.guilds.get('143058431488557056').roles.find('name', 'Guardian');
