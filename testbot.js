@@ -191,7 +191,7 @@ client.on('message', msg => {
 });
 
 client.on('voiceStateUpdate', (oldMember, member) => {
-  if (member.voiceChannelID == '447233002800676864' && member.joinedTimestamp > Date.now() - 5000){
+  if (member.voiceChannelID == '447233002800676864' && member.joinedTimestamp > Date.now() - 1500){
     var role = client.guilds.get('143058431488557056').roles.find('name', 'Guest');
     member.setRoles([role]).catch(console.error);
     logChannel.send('<@'+member.id + '> has joined the server as a guest');
