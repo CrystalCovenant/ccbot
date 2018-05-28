@@ -201,15 +201,15 @@ client.on('voiceStateUpdate', (oldMember, member) => {
 client.on('guildMemberAdd', member => {
   setTimeout(function(){
 
-    if (member.roles.array().length == 1){
-      var guardian = client.guilds.get('143058431488557056').roles.find('name', 'Guardian');
-      var core = client.guilds.get('143058431488557056').roles.find('name', 'Core Community Member');
-      var operator = client.guilds.get('143058431488557056').roles.find('name', 'Operator');
-      var hunter = client.guilds.get('143058431488557056').roles.find('name', 'Monster Hunter');
+    // if (member.roles.array().length == 1){
+    //   var guardian = client.guilds.get('143058431488557056').roles.find('name', 'Guardian');
+    //   var core = client.guilds.get('143058431488557056').roles.find('name', 'Core Community Member');
+    //   var operator = client.guilds.get('143058431488557056').roles.find('name', 'Operator');
+    //   var hunter = client.guilds.get('143058431488557056').roles.find('name', 'Monster Hunter');
 
-      member.setRoles([guardian, core, operator, hunter]);
-      logChannel.send('<@'+member.id + '> has joined the server as a member');
-    }
+    //   member.setRoles([guardian, core, operator, hunter]);
+    //   logChannel.send('<@'+member.id + '> has joined the server as a member');
+    // }
   }, 5000);
 });
 
