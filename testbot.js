@@ -209,7 +209,7 @@ client.on('guildMemberAdd', member => {
       member.setRoles([guardian, core, operator, hunter]);
       logChannel.send('<@'+member.id + '> has joined the server as a member');
     }
-  }, 1500);
+  }, 5000);
 });
 
 client.on('guildMemberRemove', member => {
