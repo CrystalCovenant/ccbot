@@ -26,14 +26,14 @@ client.on('ready', () => {
   var core = client.guilds.get('143058431488557056').roles.find('name', 'Core Community Member');
 
   // botChannel.send(
-  //   "Hey "+core.toString()+" !\n\nYou can now add and remove roles based on the games you are interested in.\n\nHow to use:\n\n1. Click the emotes related to the channels you want to see.\n2. Remove any emotes to remove channels from the sidebar.\n3. If you still want to see channels but don't want pings, mute the corresponding channel.\n4. 'Community Hub' and 'Other Games' will always be visible.\n\nKey:\n\n"+`${dEmote}`+" - Destiny 2\n"+`${ubiEmote}`+" - Ubisoft Games\n"+`${mhEmote}`+" - Monster Hunter\n\nPlease leave any feedback in "+client.channels.get('388176998025003010').toString()+".")
+  // "Hey "+core.toString()+" !\n\nYou can now add and remove roles based on the games you are interested in.\n\nHow to use:\n\n1. Click the emotes related to the channels you want to see.\n2. Remove any emotes to remove channels from the sidebar.\n3. If you still want to see channels but don't want pings, mute the corresponding channel.\n4. 'Community Hub' and 'Other Games' will always be visible.\n\nKey:\n\n"+`${dEmote}`+" - Destiny 2\n"+`${ubiEmote}`+" - Ubisoft Games\n"+`${mhEmote}`+" - Monster Hunter\n\nPlease leave any feedback in "+client.channels.get('388176998025003010').toString()+".")
   //   .then( message => {
   //     message.react(dEmote.id);
   //     message.react(ubiEmote.id);
   //     message.react(mhEmote.id);
   //   });
 
-  botChannel.send("Bot Commands:\n\n`-inviteguest` - Creates a 24 hour temporary invite to the Discord as a Guest");
+  // botChannel.send("Bot Commands:\n\n`-inviteguest` - Creates a 24 hour temporary invite to the Discord as a Guest");
   botChannel.fetchMessage('451839276058017792');
 
   setInterval(function(){
@@ -73,8 +73,9 @@ client.on('message', msg => {
     }
   }
 
-  if (msg.content == '-inviteguest'){
-    if (msg.channel.id == '451809230702510093'){
+  if (msg.channel.id == '451809230702510093'){
+
+    if (msg.content == '-inviteguest'){
       var guestChannel = client.channels.get('447233002800676864');
       guestChannel.createInvite({
         maxAge: 900,
@@ -89,6 +90,8 @@ client.on('message', msg => {
         
         logChannel.send('<@'+msg.member.id + '> has created a guest invite link on channel: '+msg.channel.name);
       });
+    } else {
+      msg.delete();
     }
   }
 
