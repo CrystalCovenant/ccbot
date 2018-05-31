@@ -9,6 +9,8 @@ var botChannel = null;
 const guildID = '143058431488557056';
 const hour = 1000 * 60 * 60;
 
+var clonnedChannels = [];
+
 var dEmote = null;
 var mhEmote = null;
 var ubiEmote = null;
@@ -125,74 +127,6 @@ client.on('message', msg => {
     msg.channel.send(`${tim3}${tim4}`);
   }
 
-  // if(msg.content == '-operator'){
-  //   var role = msg.guild.roles.find('name', 'Operator');
-  //   if (msg.member.roles.has(role.id)){
-  //     //remove
-  //     msg.member.removeRole(role).catch(console.error);
-  //     logChannel.send('<@'+msg.member.id + '> removed Operator role');
-  //     msg.channel.send('Operator role removed').then(function(message){ message.delete(5000); });
-  //     msg.delete(5000);
-  //   } else {
-  //     msg.member.addRole(role).catch(console.error);
-  //     logChannel.send('<@'+msg.member.id + '> added Operator role');
-  //     msg.channel.send('Operator role added').then(function(message){ message.delete(5000); });
-  //     msg.delete(5000);
-  //     //add
-  //   }
-  // }
-
-  // if(msg.content == '-agent'){
-  //   var role = msg.guild.roles.find('name', 'Agent');
-  //   if (msg.member.roles.has(role.id)){
-  //     //remove
-  //     msg.member.removeRole(role).catch(console.error);
-  //     logChannel.send('<@'+msg.member.id + '> removed Agent role');
-  //     msg.channel.send('Agent role removed').then(function(message){ message.delete(5000); });
-  //     msg.delete(5000);
-  //   } else {
-  //     msg.member.addRole(role).catch(console.error);
-  //     logChannel.send('<@'+msg.member.id + '> added Agent role');
-  //     msg.channel.send('Agent role added').then(function(message){ message.delete(5000); });
-  //     msg.delete(5000);
-  //     //add
-  //   }
-  // }
-
-  // if(msg.content == '-guardian'){
-  //   var role = msg.guild.roles.find('name', 'Guardian');
-  //   if (msg.member.roles.has(role.id)){
-  //     //remove
-  //     msg.member.removeRole(role).catch(console.error);
-  //     logChannel.send('<@'+msg.member.id + '> removed Guardian role');
-  //     msg.channel.send('Guardian role removed').then(function(message){ message.delete(5000); });
-  //     msg.delete(5000);
-  //   } else {
-  //     msg.member.addRole(role).catch(console.error);
-  //     logChannel.send('<@'+msg.member.id + '> added Guardian role');
-  //     msg.channel.send('Guardian role added').then(function(message){ message.delete(5000); });
-  //     msg.delete(5000);
-  //     //add
-  //   }
-  // }
-
-  // if(msg.content == '-hunter'){
-  //   var role = msg.guild.roles.find('name', 'Monster Hunter');
-  //   if (msg.member.roles.has(role.id)){
-  //     //remove
-  //     msg.member.removeRole(role).catch(console.error);
-  //     logChannel.send('<@'+msg.member.id + '> removed Monster Hunter role');
-  //     msg.channel.send('Monster Hunter role removed').then(function(message){ message.delete(5000); });
-  //     msg.delete(5000);
-  //   } else {
-  //     msg.member.addRole(role).catch(console.error);
-  //     logChannel.send('<@'+msg.member.id + '> added Monster Hunter role');
-  //     msg.channel.send('Monster Hunter role added').then(function(message){ message.delete(5000); });
-  //     msg.delete(5000);
-  //     //add
-  //   }
-  // }
-
   if (msg.channel.name != 'test') return;
 
   if (msg.content == '-clone'){
@@ -200,30 +134,9 @@ client.on('message', msg => {
     boisChannel.clone('Cloned channel').then(channel => {
       channel.setParent(boisChannel.parentID);
       msg.member.setVoiceChannel(channel);
+      clonnedChannels.push(channel.id);
     });
   }
-
-  // Testing content //
-  
-
-  
-
-  
-  // msg.channel.send('Test reply');
-
-  // if (msg.content === '/join') {
-  //   // Only try to join the sender's voice channel if they are in one themselves
-  //   if (msg.member.voiceChannel) {
-  //     msg.member.voiceChannel.join()
-  //       .then(connection => { // Connection is an instance of VoiceConnection
-  //         msg.reply('I have successfully connected to the channel!');
-  //       })
-  //       .catch(console.log);
-  //   } else {
-  //     msg.reply('You need to join a voice channel first!');
-  //   }
-  // }
-
 
 });
 
@@ -234,7 +147,12 @@ client.on('voiceStateUpdate', (oldMember, member) => {
     logChannel.send('<@'+member.id + '> has joined the server as a guest');
   } else {
     if (member.voiceChannelID == undefined){
-      logChannel.send('left channel');
+      if (clonnedChannels.indexOf(oldMember.voiceChannelID) > -1){
+        if (oldMember.voiceChannel.members.length() == 0){
+          oldMember.voiceChannel.delete();
+        }
+
+      }
     }
   }
 });
