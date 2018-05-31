@@ -146,15 +146,19 @@ client.on('voiceStateUpdate', (oldMember, member) => {
     member.addRole(role).catch(console.error);
     logChannel.send('<@'+member.id + '> has joined the server as a guest');
   } else {
-    if (member.voiceChannelID == undefined){
-      console.log(clonnedChannels);
-      if (clonnedChannels.indexOf(oldMember.voiceChannelID) > -1){
-        var members = oldMember.voiceChannel.members.array();
-        if (members.length == 0){
-          oldMember.voiceChannel.delete();
-        }
+    try {
+      if (member.voiceChannelID == undefined || clonnedChannels.indexOf(member.voiceChannelID) == -1){
+        console.log(clonnedChannels);
+        if (clonnedChannels.indexOf(oldMember.voiceChannelID) > -1){
+          var members = oldMember.voiceChannel.members.array();
+          if (members.length == 0){
+            oldMember.voiceChannel.delete();
+          }
 
+        }
       }
+    } catch (e) {
+      console.log(e);
     }
   }
 });
