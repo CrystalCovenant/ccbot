@@ -32,6 +32,8 @@ client.on('ready', () => {
   //     message.react(ubiEmote.id);
   //     message.react(mhEmote.id);
   //   });
+
+  botChannel.send("You can now use -inviteguest in this channel to generate a temporary invite to the Discord server to invite non-community members to the Discord for a Destiny 2 event. Please use this to invite public Discord LFG participants as we can monitor their activity and it maintains our activity within the community. As this is guest invite, the guest will be kicked from the server 24 hours after they have accepted the invite. ");
   botChannel.fetchMessage('451839276058017792');
 
   setInterval(function(){
@@ -72,20 +74,22 @@ client.on('message', msg => {
   }
 
   if (msg.content == '-inviteguest'){
-    var guestChannel = client.channels.get('447233002800676864');
-    guestChannel.createInvite({
-      maxAge: 900,
-      maxUsers: 1,
-      unique: true
-    })
-    .then(function(invite){
-      msg.channel.send(invite.url).then(function(newMessage){
-        newMessage.delete(1000 * 900);
-        msg.delete(1000 * 900);
+    if (msg.channel.id == '451809230702510093'){
+      var guestChannel = client.channels.get('447233002800676864');
+      guestChannel.createInvite({
+        maxAge: 900,
+        maxUsers: 1,
+        unique: true
+      })
+      .then(function(invite){
+        msg.channel.send(invite.url).then(function(newMessage){
+          newMessage.delete(1000 * 900);
+          msg.delete(2000);
+        });
+        
+        logChannel.send('<@'+msg.member.id + '> has created a guest invite link on channel: '+msg.channel.name);
       });
-      
-      logChannel.send('<@'+msg.member.id + '> has created a guest invite link on channel: '+msg.channel.name);
-    });
+    }
   }
 
   if (msg.content == '-invm'){
