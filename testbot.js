@@ -23,12 +23,15 @@ client.on('ready', () => {
   mhEmote = client.emojis.find('name', 'MonsterHunter');
   ubiEmote = client.emojis.find('name', 'Ubisoft');
 
-  // botChannel.send('Remove and add your own roles!')
-  //   .then( message => {
-  //     message.react(dEmote.id);
-  //     message.react(ubiEmote.id);
-  //     message.react(mhEmote.id);
-  //   });
+  var core = client.guilds.get('143058431488557056').roles.find('name', 'Core Community Member');
+
+  botChannel.send(
+    "Hey <@"+core.id+"> !\nYou can now add and remove roles based on the games you are interested in.\nHow to use:\n\n1. Click the emotes related to the channels you want to see.\n2. Remove any emotes to remove channels from the sidebar.\n3. If you still want to see channels but don't want pings, mute the corresponding channel.\n4. 'Community Hub' and 'Other Games' will always be visible.\n\nKey:  "+`${dEmote}`+" - Destiny 2\n"+`${ubiEmote}`+" - Ubisoft Games\n"+`${mhEmote}`+" - Monster Hunter\n\nPlease leave any feedback in #communityfeedback.")
+    .then( message => {
+      message.react(dEmote.id);
+      message.react(ubiEmote.id);
+      message.react(mhEmote.id);
+    });
   botChannel.fetchMessage('451817062831095818');
 
   setInterval(function(){
