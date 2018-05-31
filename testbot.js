@@ -236,22 +236,24 @@ client.on('guildMemberRemove', member => {
 
 client.on('messageReactionAdd', (reaction, user) => {
 
-  var member = client.fetchUser(user.id);
-  botChannel.send(member.id + ' : ' + user.id);
-  if (reaction.message.id == '451817062831095818'){
-    if (reaction.emoji.id == dEmote.id){
-      var role = reaction.message.guild.roles.find('name', 'Guardian');
-      botChannel.send('Found Role: ' + role.id);
-      if (member.roles.has(role.id)){
-        botChannel.send('<@'+user.id + '> Already has the Guadian Role.').then(function(message){ message.delete(5000); });
-      } else {
-        member.addRole(role).catch(console.error);
-        logChannel.send('<@'+user.id + '> added Guardian role');
-        botChannel.send('<@'+user.id + '> Guardian role added.').then(function(message){ message.delete(5000); });
-        //add
+  client.fetchUser(user.id).then( member => {
+    botChannel.send(member.id + ' : ' + user.id);
+    if (reaction.message.id == '451817062831095818'){
+      if (reaction.emoji.id == dEmote.id){
+        var role = reaction.message.guild.roles.find('name', 'Guardian');
+        botChannel.send('Found Role: ' + role.id);
+        if (member.roles.has(role.id)){
+          botChannel.send('<@'+user.id + '> Already has the Guadian Role.').then(function(message){ message.delete(5000); });
+        } else {
+          member.addRole(role).catch(console.error);
+          logChannel.send('<@'+user.id + '> added Guardian role');
+          botChannel.send('<@'+user.id + '> Guardian role added.').then(function(message){ message.delete(5000); });
+          //add
+        }
       }
     }
-  }
+  });
+  
 });
 
 client.login('NDQ4OTY3MjQ1NTI4NDMyNjQx.Ded1hw.e5QHDpzY_T6GxJ208rewtvjGk60');
