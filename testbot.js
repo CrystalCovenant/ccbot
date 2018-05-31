@@ -9,24 +9,27 @@ var botChannel = null;
 const guildID = '143058431488557056';
 const hour = 1000 * 60 * 60;
 
+const dEmote = null;
+const mhEmote = null;
+const ubiEmote = null;
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   client.user.setUsername(botName);
   logChannel = client.channels.get('375658447695249408');
   botChannel = client.channels.get('451809230702510093');
 
-  var dEmote = client.emojis.find('name', 'Destiny2');
-  var mhEmote = client.emojis.find('name', 'MonsterHunter');
-  var ubiEmote = client.emojis.find('name', 'Ubisoft');
-  
-  botChannel.send('Remove and add your own roles!')
-    .then( message => {
-      message.react(dEmote.id);
-      message.react(ubiEmote.id);
-      message.react(mhEmote.id);
-    });
-  // botChannel.fetchMessages()
-  
+  dEmote = client.emojis.find('name', 'Destiny2');
+  mhEmote = client.emojis.find('name', 'MonsterHunter');
+  ubiEmote = client.emojis.find('name', 'Ubisoft');
+
+  // botChannel.send('Remove and add your own roles!')
+  //   .then( message => {
+  //     message.react(dEmote.id);
+  //     message.react(ubiEmote.id);
+  //     message.react(mhEmote.id);
+  //   });
+  botChannel.fetchMessages('451817062831095818');
 
   setInterval(function(){
     var role = client.guilds.get('143058431488557056').roles.find('name', 'Guest');
