@@ -154,9 +154,10 @@ client.on('message', msg => {
     var raidChannel = client.guilds.get('143058431488557056').channels.get('400364097310556164');
     raidChannel.clone('Raid Fireteam ' +(d2raidChannels.length+1)).then( channel => {
       channel.setParent(raidChannel.parentID);
-      msg.member.setVoiceChannel(channel);
-      clonnedChannels.push(channel.id);
-      d2raidChannels.push(channel.id);
+      msg.member.setVoiceChannel(channel).then(() => {
+        clonnedChannels.push(channel.id);
+        d2raidChannels.push(channel.id);
+      });
     });
   }
 
@@ -180,7 +181,7 @@ client.on('voiceStateUpdate', (oldMember, member) => {
     logChannel.send('<@'+member.id + '> has joined the server as a guest');
   }
 
-  if (clonnedChannels.indexOf(oldMember.voiceChannelID) > -1){
+  if (oldMember.voiceChannelID != undefined && clonnedChannels.indexOf(oldMember.voiceChannelID) > -1){
     var members = oldMember.voiceChannel.members.array();
     if (members.length == 0){
       var i = clonnedChannels.indexOf(oldMember.voiceChannelID);
