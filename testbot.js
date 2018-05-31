@@ -235,12 +235,12 @@ client.on('guildMemberRemove', member => {
 });
 
 client.on('messageReactionAdd', (reaction, user) => {
-  botChannel.send('Emote added');
+  // botChannel.send('Emote added');
   if (reaction.message.id == '451817062831095818'){
     if (reaction.emoji.id == dEmote.id){
-      botChannel.send('Found Emote: ' + dEmote.id);
-      // var role = reaction.message.guild.roles.find('name', 'Guardian');
-      // botChannel.send('Found Role: ' + role.id);
+      // botChannel.send('Found Emote: ' + dEmote.id);
+      var role = reaction.message.guild.roles.find('name', 'Guardian');
+      botChannel.send('Found Role: ' + role.id);
       // if (user.roles.has(role.id)){
 
       //   botChannel.send('<@'+user.id + '> Already has the Guadian Role.').then(function(message){ message.delete(5000); });
