@@ -29,7 +29,7 @@ client.on('ready', () => {
   //     message.react(ubiEmote.id);
   //     message.react(mhEmote.id);
   //   });
-  botChannel.fetchMessages('451817062831095818');
+  botChannel.fetchMessage('451817062831095818');
 
   setInterval(function(){
     var role = client.guilds.get('143058431488557056').roles.find('name', 'Guest');
