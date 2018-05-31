@@ -233,7 +233,7 @@ client.on('voiceStateUpdate', (oldMember, member) => {
     member.addRole(role).catch(console.error);
     logChannel.send('<@'+member.id + '> has joined the server as a guest');
   } else {
-    if (member.voiceChannelID == ''){
+    if (member.voiceChannelID == undefined){
       logChannel.send('left channel');
     }
   }
