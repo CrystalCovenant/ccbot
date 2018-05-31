@@ -78,6 +78,7 @@ client.on('message', msg => {
     .then(function(invite){
       msg.channel.send(invite.url).then(function(newMessage){
         newMessage.delete(1000 * 900);
+        msg.delete(1000 * 900);
       });
       
       logChannel.send('<@'+msg.member.id + '> has created a guest invite link on channel: '+msg.channel.name);
