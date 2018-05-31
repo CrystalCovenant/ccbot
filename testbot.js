@@ -197,7 +197,6 @@ client.on('message', msg => {
 
   if (msg.content == '-clone'){
     var boisChannel = client.guilds.get('143058431488557056').channels.get('451849031845675012');
-    // msg.channel.send(boisChannel.id);
     boisChannel.clone('Cloned channel').then(channel => {
       channel.setParent(boisChannel.parentID);
       msg.member.setVoiceChannel(channel);
@@ -233,6 +232,10 @@ client.on('voiceStateUpdate', (oldMember, member) => {
   if (member.voiceChannelID == '447233002800676864' && member.joinedTimestamp > Date.now() - 5000){
     member.addRole(role).catch(console.error);
     logChannel.send('<@'+member.id + '> has joined the server as a guest');
+  } else {
+    if (member.voiceChannelID == ''){
+      logChannel.send('left channel');
+    }
   }
 });
 
