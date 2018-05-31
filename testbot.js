@@ -10,6 +10,8 @@ const guildID = '143058431488557056';
 const hour = 1000 * 60 * 60;
 
 var clonnedChannels = [];
+var d2pvpChannels = [];
+var d2pveChannels = [ '400364097310556164' ];
 
 var dEmote = null;
 var mhEmote = null;
@@ -138,6 +140,16 @@ client.on('message', msg => {
     });
   }
 
+  if (msg.content == '-destinypve'){
+    var pveChannel = client.guilds.get('143058431488557056').channels.get('400364097310556164');
+    pveChannel.clone('PvE Fireteam ' +(d2pveChannels.length+1)).then( channel => {
+      channel.setParent(pveChannel.parentID);
+      msg.member.setVoiceChannel(channel);
+      clonnedChannels.push(channel.id);
+      d2pveChannels.push(channel.id);
+    });
+  }
+
 });
 
 client.on('voiceStateUpdate', (oldMember, member) => {
@@ -145,20 +157,12 @@ client.on('voiceStateUpdate', (oldMember, member) => {
   if (member.voiceChannelID == '447233002800676864' && member.joinedTimestamp > Date.now() - 5000){
     member.addRole(role).catch(console.error);
     logChannel.send('<@'+member.id + '> has joined the server as a guest');
-  } else {
-    try {
-      if (member.voiceChannelID == undefined || clonnedChannels.indexOf(member.voiceChannelID) == -1){
-        console.log(clonnedChannels);
-        if (clonnedChannels.indexOf(oldMember.voiceChannelID) > -1){
-          var members = oldMember.voiceChannel.members.array();
-          if (members.length == 0){
-            oldMember.voiceChannel.delete();
-          }
+  }
 
-        }
-      }
-    } catch (e) {
-      console.log(e);
+  if (clonnedChannels.indexOf(oldMember.voiceChannelID) > -1){
+    var members = oldMember.voiceChannel.members.array();
+    if (members.length == 0){
+      oldMember.voiceChannel.delete();
     }
   }
 });
