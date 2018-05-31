@@ -159,6 +159,8 @@ client.on('message', msg => {
       msg.member.setVoiceChannel(channel).then(() => {
         clonnedChannels.push(channel.id);
         d2raidChannels.push(channel.id);
+      }).error(e => {
+        console.log(e);
       });
     });
   }
