@@ -33,7 +33,7 @@ client.on('ready', () => {
   //     message.react(mhEmote.id);
   //   });
 
-  botChannel.send("You can now use -inviteguest in this channel to generate a temporary invite to the Discord server to invite non-community members to the Discord for a Destiny 2 event.\nPlease use this to invite public Discord LFG participants as we can monitor their activity and it maintains our activity within the community. \nAs this is guest invite, the guest will be kicked from the server 24 hours after they have accepted the invite.");
+  botChannel.send("You can now use `-inviteguest` in this channel to generate a temporary invite to the Discord server to invite non-community members to the Discord for a Destiny 2 event.\nPlease use this to invite public Discord LFG participants as we can monitor their activity and it maintains our activity within the community. \nAs this is guest invite, the guest will be kicked from the server 24 hours after they have accepted the invite.");
   botChannel.fetchMessage('451839276058017792');
 
   setInterval(function(){
