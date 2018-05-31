@@ -237,17 +237,35 @@ client.on('guildMemberRemove', member => {
 client.on('messageReactionAdd', (reaction, user) => {
 
   var member = client.guilds.get('143058431488557056').members.get(user.id);
-  botChannel.send(member.id + ' : ' + user.id);
   if (reaction.message.id == '451817062831095818'){
     if (reaction.emoji.id == dEmote.id){
       var role = reaction.message.guild.roles.find('name', 'Guardian');
-      botChannel.send('Found Role: ' + role.id);
       if (member.roles.has(role.id)){
-        botChannel.send('<@'+user.id + '> Already has the Guadian Role.').then(function(message){ message.delete(5000); });
+        botChannel.send('<@'+user.id + '> Already has the Guardian Role.').then(function(message){ message.delete(5000); });
       } else {
         member.addRole(role).catch(console.error);
         logChannel.send('<@'+user.id + '> added Guardian role');
         botChannel.send('<@'+user.id + '> Guardian role added.').then(function(message){ message.delete(5000); });
+        //add
+      }
+    } else if (reaction.emoji.id == mhEmote.id){
+      var role = reaction.message.guild.roles.find('name', 'Monster Huner');
+      if (member.roles.has(role.id)){
+        botChannel.send('<@'+user.id + '> Already has the Monster Huner Role.').then(function(message){ message.delete(5000); });
+      } else {
+        member.addRole(role).catch(console.error);
+        logChannel.send('<@'+user.id + '> added Monster Huner role');
+        botChannel.send('<@'+user.id + '> Monster Huner role added.').then(function(message){ message.delete(5000); });
+        //add
+      }
+    } else if (reaction.emoji.id == ubiEmote.id){
+      var role = reaction.message.guild.roles.find('name', 'Operator');
+      if (member.roles.has(role.id)){
+        botChannel.send('<@'+user.id + '> Already has the Operator Role.').then(function(message){ message.delete(5000); });
+      } else {
+        member.addRole(role).catch(console.error);
+        logChannel.send('<@'+user.id + '> added Operator role');
+        botChannel.send('<@'+user.id + '> Operator role added.').then(function(message){ message.delete(5000); });
         //add
       }
     }
