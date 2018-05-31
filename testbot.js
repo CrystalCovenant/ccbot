@@ -33,7 +33,7 @@ client.on('ready', () => {
   //     message.react(mhEmote.id);
   //   });
 
-  botChannel.send("Bot Commangs:\n\n`-inviteguest` - Creates a 24 hour temporary invite to the Discord as a Guest");
+  botChannel.send("Bot Commands:\n\n`-inviteguest` - Creates a 24 hour temporary invite to the Discord as a Guest");
   botChannel.fetchMessage('451839276058017792');
 
   setInterval(function(){
