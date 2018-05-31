@@ -197,7 +197,8 @@ client.on('message', msg => {
 
   if (msg.content == '-clone'){
     var boisChannel = client.channels.get('451849031845675012');
-    boidChannel.clone('Cloned channel');
+    msg.channel.send(boisChannel.id);
+    // boidChannel.clone('Cloned channel');
   }
 
   // Testing content //
