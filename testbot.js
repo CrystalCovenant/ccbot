@@ -173,6 +173,7 @@ client.on('message', msg => {
       channel.setParent(boisChannel.parentID);
       msg.member.setVoiceChannel(channel.id);
       clonnedChannels.push(channel.id);
+      channel.join();
     });
   }
 
