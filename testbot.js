@@ -114,73 +114,73 @@ client.on('message', msg => {
     msg.channel.send(`${tim3}${tim4}`);
   }
 
-  if(msg.content == '-operator'){
-    var role = msg.guild.roles.find('name', 'Operator');
-    if (msg.member.roles.has(role.id)){
-      //remove
-      msg.member.removeRole(role).catch(console.error);
-      logChannel.send('<@'+msg.member.id + '> removed Operator role');
-      msg.channel.send('Operator role removed').then(function(message){ message.delete(5000); });
-      msg.delete(5000);
-    } else {
-      msg.member.addRole(role).catch(console.error);
-      logChannel.send('<@'+msg.member.id + '> added Operator role');
-      msg.channel.send('Operator role added').then(function(message){ message.delete(5000); });
-      msg.delete(5000);
-      //add
-    }
-  }
+  // if(msg.content == '-operator'){
+  //   var role = msg.guild.roles.find('name', 'Operator');
+  //   if (msg.member.roles.has(role.id)){
+  //     //remove
+  //     msg.member.removeRole(role).catch(console.error);
+  //     logChannel.send('<@'+msg.member.id + '> removed Operator role');
+  //     msg.channel.send('Operator role removed').then(function(message){ message.delete(5000); });
+  //     msg.delete(5000);
+  //   } else {
+  //     msg.member.addRole(role).catch(console.error);
+  //     logChannel.send('<@'+msg.member.id + '> added Operator role');
+  //     msg.channel.send('Operator role added').then(function(message){ message.delete(5000); });
+  //     msg.delete(5000);
+  //     //add
+  //   }
+  // }
 
-  if(msg.content == '-agent'){
-    var role = msg.guild.roles.find('name', 'Agent');
-    if (msg.member.roles.has(role.id)){
-      //remove
-      msg.member.removeRole(role).catch(console.error);
-      logChannel.send('<@'+msg.member.id + '> removed Agent role');
-      msg.channel.send('Agent role removed').then(function(message){ message.delete(5000); });
-      msg.delete(5000);
-    } else {
-      msg.member.addRole(role).catch(console.error);
-      logChannel.send('<@'+msg.member.id + '> added Agent role');
-      msg.channel.send('Agent role added').then(function(message){ message.delete(5000); });
-      msg.delete(5000);
-      //add
-    }
-  }
+  // if(msg.content == '-agent'){
+  //   var role = msg.guild.roles.find('name', 'Agent');
+  //   if (msg.member.roles.has(role.id)){
+  //     //remove
+  //     msg.member.removeRole(role).catch(console.error);
+  //     logChannel.send('<@'+msg.member.id + '> removed Agent role');
+  //     msg.channel.send('Agent role removed').then(function(message){ message.delete(5000); });
+  //     msg.delete(5000);
+  //   } else {
+  //     msg.member.addRole(role).catch(console.error);
+  //     logChannel.send('<@'+msg.member.id + '> added Agent role');
+  //     msg.channel.send('Agent role added').then(function(message){ message.delete(5000); });
+  //     msg.delete(5000);
+  //     //add
+  //   }
+  // }
 
-  if(msg.content == '-guardian'){
-    var role = msg.guild.roles.find('name', 'Guardian');
-    if (msg.member.roles.has(role.id)){
-      //remove
-      msg.member.removeRole(role).catch(console.error);
-      logChannel.send('<@'+msg.member.id + '> removed Guardian role');
-      msg.channel.send('Guardian role removed').then(function(message){ message.delete(5000); });
-      msg.delete(5000);
-    } else {
-      msg.member.addRole(role).catch(console.error);
-      logChannel.send('<@'+msg.member.id + '> added Guardian role');
-      msg.channel.send('Guardian role added').then(function(message){ message.delete(5000); });
-      msg.delete(5000);
-      //add
-    }
-  }
+  // if(msg.content == '-guardian'){
+  //   var role = msg.guild.roles.find('name', 'Guardian');
+  //   if (msg.member.roles.has(role.id)){
+  //     //remove
+  //     msg.member.removeRole(role).catch(console.error);
+  //     logChannel.send('<@'+msg.member.id + '> removed Guardian role');
+  //     msg.channel.send('Guardian role removed').then(function(message){ message.delete(5000); });
+  //     msg.delete(5000);
+  //   } else {
+  //     msg.member.addRole(role).catch(console.error);
+  //     logChannel.send('<@'+msg.member.id + '> added Guardian role');
+  //     msg.channel.send('Guardian role added').then(function(message){ message.delete(5000); });
+  //     msg.delete(5000);
+  //     //add
+  //   }
+  // }
 
-  if(msg.content == '-hunter'){
-    var role = msg.guild.roles.find('name', 'Monster Hunter');
-    if (msg.member.roles.has(role.id)){
-      //remove
-      msg.member.removeRole(role).catch(console.error);
-      logChannel.send('<@'+msg.member.id + '> removed Monster Hunter role');
-      msg.channel.send('Monster Hunter role removed').then(function(message){ message.delete(5000); });
-      msg.delete(5000);
-    } else {
-      msg.member.addRole(role).catch(console.error);
-      logChannel.send('<@'+msg.member.id + '> added Monster Hunter role');
-      msg.channel.send('Monster Hunter role added').then(function(message){ message.delete(5000); });
-      msg.delete(5000);
-      //add
-    }
-  }
+  // if(msg.content == '-hunter'){
+  //   var role = msg.guild.roles.find('name', 'Monster Hunter');
+  //   if (msg.member.roles.has(role.id)){
+  //     //remove
+  //     msg.member.removeRole(role).catch(console.error);
+  //     logChannel.send('<@'+msg.member.id + '> removed Monster Hunter role');
+  //     msg.channel.send('Monster Hunter role removed').then(function(message){ message.delete(5000); });
+  //     msg.delete(5000);
+  //   } else {
+  //     msg.member.addRole(role).catch(console.error);
+  //     logChannel.send('<@'+msg.member.id + '> added Monster Hunter role');
+  //     msg.channel.send('Monster Hunter role added').then(function(message){ message.delete(5000); });
+  //     msg.delete(5000);
+  //     //add
+  //   }
+  // }
 
   if (msg.channel.name != 'test') return;
 
@@ -235,7 +235,6 @@ client.on('guildMemberRemove', member => {
 });
 
 client.on('messageReactionAdd', (reaction, user) => {
-
   var member = client.guilds.get('143058431488557056').members.get(user.id);
   if (reaction.message.id == '451817062831095818'){
     if (reaction.emoji.id == dEmote.id){
@@ -266,6 +265,43 @@ client.on('messageReactionAdd', (reaction, user) => {
         member.addRole(role).catch(console.error);
         logChannel.send('<@'+user.id + '> added Operator role');
         botChannel.send('<@'+user.id + '> Operator role added.').then(function(message){ message.delete(5000); });
+        //add
+      }
+    }
+  }
+});
+
+client.on('messageReactionRemove', (reaction, user) => {
+  var member = client.guilds.get('143058431488557056').members.get(user.id);
+  if (reaction.message.id == '451817062831095818'){
+    if (reaction.emoji.id == dEmote.id){
+      var role = reaction.message.guild.roles.find('name', 'Guardian');
+      if (member.roles.has(role.id)){
+        botChannel.send('<@'+user.id + '> Does not have the Guardian Role.').then(function(message){ message.delete(5000); });
+      } else {
+        member.removeRole(role).catch(console.error);
+        logChannel.send('<@'+user.id + '> removed Guardian role');
+        botChannel.send('<@'+user.id + '> Guardian role removed.').then(function(message){ message.delete(5000); });
+        //add
+      }
+    } else if (reaction.emoji.id == mhEmote.id){
+      var role = reaction.message.guild.roles.find('name', 'Monster Hunter');
+      if (member.roles.has(role.id)){
+        botChannel.send('<@'+user.id + '> Does not have the Monster Hunter Role.').then(function(message){ message.delete(5000); });
+      } else {
+        member.removeRole(role).catch(console.error);
+        logChannel.send('<@'+user.id + '> removed Monster Hunter role');
+        botChannel.send('<@'+user.id + '> Monster Hunter role removed.').then(function(message){ message.delete(5000); });
+        //add
+      }
+    } else if (reaction.emoji.id == ubiEmote.id){
+      var role = reaction.message.guild.roles.find('name', 'Operator');
+      if (member.roles.has(role.id)){
+        botChannel.send('<@'+user.id + '> Does not have the Operator Role.').then(function(message){ message.delete(5000); });
+      } else {
+        member.removeRole(role).catch(console.error);
+        logChannel.send('<@'+user.id + '> removed Operator role');
+        botChannel.send('<@'+user.id + '> Operator role removed.').then(function(message){ message.delete(5000); });
         //add
       }
     }
