@@ -204,16 +204,16 @@ client.on('voiceStateUpdate', (oldMember, member) => {
       var pve = d2pveChannels.indexOf(oldMember.voiceChannelID);
       var pvp = d2pvpChannels.indexOf(oldMember.voiceChannelID);
       var raid = d2raidChannels.indexOf(oldMember.voiceChannelID);
-      if (i !== 1){
+      if (i !== 1 && !isNaN(i)){
         clonnedChannels.splice(i, 1);
       }
-      if (pve !== 1){
+      if (pve !== 1 && !isNaN(pve)){
         d2pveChannels.splice(pve, 1);
       }
-      if (pve !== 1){
+      if (pve !== 1 && !isNaN(pvp)){
         d2pvpChannels.splice(pvp, 1);
       }
-      if (raid !== 1){
+      if (raid !== 1 && !isNaN(raid)){
         d2raidChannels.splice(raid, 1);
       }
       oldMember.voiceChannel.delete();
