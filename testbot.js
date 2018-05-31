@@ -148,7 +148,7 @@ client.on('voiceStateUpdate', (oldMember, member) => {
   } else {
     if (member.voiceChannelID == undefined){
       if (clonnedChannels.indexOf(oldMember.voiceChannelID) > -1){
-        if (oldMember.voiceChannel.members.length() == 0){
+        if (oldMember.voiceChannel.members.array().length() == 0){
           oldMember.voiceChannel.delete();
         }
 
