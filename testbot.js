@@ -217,8 +217,10 @@ client.on('guildMemberRemove', member => {
 });
 
 client.on('messageReactionAdd', (reaction, user) => {
+  var testChannel = client.channels.get('377877178890715142');
+  testChannel.send(reaction.message.id);
   if (reaction.message.id == '451804175513419786'){
-    var testChannel = client.channels.get('377877178890715142');
+    
     testChannel.send('Added a reaction');
   }
 });
