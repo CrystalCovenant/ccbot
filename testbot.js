@@ -217,12 +217,13 @@ client.on('guildMemberRemove', member => {
 });
 
 client.on('messageReactionAdd', (reaction, user) => {
-  var testChannel = client.channels.get('377877178890715142');
-  testChannel.send(reaction.message.id);
-  if (reaction.message.id == '451804175513419786'){
+  logChannel.send('test');
+  // var testChannel = client.channels.get('377877178890715142');
+  // testChannel.send(reaction.message.id);
+  // if (reaction.message.id == '451804175513419786'){
     
-    testChannel.send('Added a reaction');
-  }
+  //   testChannel.send('Added a reaction');
+  // }
 });
 
 client.login('NDQ4OTY3MjQ1NTI4NDMyNjQx.Ded1hw.e5QHDpzY_T6GxJ208rewtvjGk60');
