@@ -241,14 +241,14 @@ client.on('messageReactionAdd', (reaction, user) => {
       if (reaction.emoji.id == dEmote.id){
         var role = reaction.message.guild.roles.find('name', 'Guardian');
         botChannel.send(member.roles);
-        if (member.roles.has(role.id)){
-          botChannel.send('<@'+user.id + '> Already has the Guadian Role.').then(function(message){ message.delete(5000); });
-        } else {
-          member.addRole(role).catch(console.error);
-          logChannel.send('<@'+user.id + '> added Guardian role');
-          botChannel.send('<@'+user.id + '> Guardian role added.').then(function(message){ message.delete(5000); });
-          //add
-        }
+        // if (member.roles.has(role.id)){
+        //   botChannel.send('<@'+user.id + '> Already has the Guadian Role.').then(function(message){ message.delete(5000); });
+        // } else {
+        //   member.addRole(role).catch(console.error);
+        //   logChannel.send('<@'+user.id + '> added Guardian role');
+        //   botChannel.send('<@'+user.id + '> Guardian role added.').then(function(message){ message.delete(5000); });
+        //   //add
+        // }
       }
     }
   }).catch(error => {console.log(error)});
