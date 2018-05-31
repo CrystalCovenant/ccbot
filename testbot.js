@@ -5,6 +5,7 @@ const client = new Discord.Client();
 const botId = '448967245528432641';
 const botName = 'CC.bot'
 var logChannel = null;
+var botChannel = null;
 const guildID = '143058431488557056';
 const hour = 1000 * 60 * 60;
 
@@ -12,6 +13,14 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   client.user.setUsername(botName);
   logChannel = client.channels.get('375658447695249408');
+  botChannel = client.channels.get('451809230702510093');
+
+  var dEmote = client.emojis.find('name', 'Destiny2');
+  botChannel.send('Remove and add your own roles!')
+    .then( message => {
+      message.react(dEmote.id);
+    });
+  
 
   setInterval(function(){
     var role = client.guilds.get('143058431488557056').roles.find('name', 'Guest');
