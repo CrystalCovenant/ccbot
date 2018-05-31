@@ -37,7 +37,7 @@ client.on('ready', () => {
   //     message.react(ubiEmote.id);
   //     message.react(mhEmote.id);
   //   });
-  // botChannel.fetchMessage('451845699693314068').then(msg => { msg.edit("\nBot Commands:\n\n`-inviteguest` - Creates a 24 hour temporary invite to the Discord as a Guest\n\n-----------------------------------------------------------------------------------------------------------"); });
+  // botChannel.fetchMessage('451845699693314068').then(msg => { msg.edit("\nBot Commands:\n\n`-inviteguest` - Creates a 24 hour temporary invite to the Discord as a Guest\n`-destinypve` - Creates a new Destiny PvE Voice Channel\n`-destinypvp` - Creates a new Destiny PvP Voice Channel\n`-destinyraid` - Creates a new Destiny Raid Voice Channel\n\n-----------------------------------------------------------------------------------------------------------"); });
   
   botChannel.fetchMessage('451839276058017792');
 
@@ -130,17 +130,6 @@ client.on('message', msg => {
     msg.channel.send(`${tim3}${tim4}`);
   }
 
-  if (msg.channel.name != 'test') return;
-
-  if (msg.content == '-clone'){
-    var boisChannel = client.guilds.get('143058431488557056').channels.get('451849031845675012');
-    boisChannel.clone('Cloned channel').then(channel => {
-      channel.setParent(boisChannel.parentID);
-      msg.member.setVoiceChannel(channel);
-      clonnedChannels.push(channel.id);
-    });
-  }
-
   if (msg.content == '-destinypve'){
     var pveChannel = client.guilds.get('143058431488557056').channels.get('400364097310556164');
     pveChannel.clone('PvE Fireteam ' +(d2pveChannels.length+1)).then( channel => {
@@ -171,6 +160,19 @@ client.on('message', msg => {
     });
   }
 
+  if (msg.channel.name != 'test') return;
+
+  if (msg.content == '-clone'){
+    var boisChannel = client.guilds.get('143058431488557056').channels.get('451849031845675012');
+    boisChannel.clone('Cloned channel').then(channel => {
+      channel.setParent(boisChannel.parentID);
+      msg.member.setVoiceChannel(channel);
+      clonnedChannels.push(channel.id);
+    });
+  }
+
+  
+
 });
 
 client.on('voiceStateUpdate', (oldMember, member) => {
@@ -183,6 +185,22 @@ client.on('voiceStateUpdate', (oldMember, member) => {
   if (clonnedChannels.indexOf(oldMember.voiceChannelID) > -1){
     var members = oldMember.voiceChannel.members.array();
     if (members.length == 0){
+      var i = clonnedChannels.indexOf(oldMember.voiceChannelID);
+      var pve = d2pveChannels.indexOf(oldMember.voiceChannelID);
+      var pvp = d2pvpChannels.indexOf(oldMember.voiceChannelID);
+      var raid = d2raidChannels.indexOf(oldMember.voiceChannelID);
+      if (i !== 1){
+        clonnedChannels.splice(i, 1);
+      }
+      if (pve !== 1){
+        d2pveChannels.splice(pve, 1);
+      }
+      if (pve !== 1){
+        d2pvpChannels.splice(pvp, 1);
+      }
+      if (raid !== 1){
+        d2raidChannels.splice(raid, 1);
+      }
       oldMember.voiceChannel.delete();
     }
   }
