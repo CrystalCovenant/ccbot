@@ -237,7 +237,7 @@ client.on('guildMemberRemove', member => {
 client.on('messageReactionAdd', (reaction, user) => {
   if (reaction.message.id == '451817062831095818'){
     if (reaction.emoji.id == dEmote.id){
-      var role = msg.guild.roles.find('name', 'Guardian');
+      var role = reaction.message.guild.roles.find('name', 'Guardian');
       if (user.roles.has(role.id)){
         botChannel.send('<@'+user.id + '> Already has the Guadian Role.').then(function(message){ message.delete(5000); });
       } else {
