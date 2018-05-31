@@ -19,12 +19,14 @@ client.on('ready', () => {
   var mhEmote = client.emojis.find('name', 'MonsterHunter');
   var ubiEmote = client.emojis.find('name', 'Ubisoft');
   
-  botChannel.fetchMessage('451810247905116165').then( message => {
-    message.react(dEmote.id);
-    message.react(mhEmote.id);
-    message.react(ubiEmote.id);
-  });
-
+  botChannel.send('Remove and add your own roles!')
+    .then( message => {
+      message.react(dEmote.id);
+      message.react(ubiEmote.id);
+      message.react(mhEmote.id);
+    });
+  // botChannel.fetchMessages()
+  
 
   setInterval(function(){
     var role = client.guilds.get('143058431488557056').roles.find('name', 'Guest');
