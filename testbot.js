@@ -9,9 +9,9 @@ var botChannel = null;
 const guildID = '143058431488557056';
 const hour = 1000 * 60 * 60;
 
-const dEmote = null;
-const mhEmote = null;
-const ubiEmote = null;
+var dEmote = null;
+var mhEmote = null;
+var ubiEmote = null;
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
