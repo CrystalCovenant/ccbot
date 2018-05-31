@@ -235,7 +235,8 @@ client.on('guildMemberRemove', member => {
 });
 
 client.on('messageReactionAdd', (reaction, user) => {
-  var member = reaction.message.member;
+
+  var member = client.fetchUser(user.id);
   botChannel.send(member.id + ' : ' + user.id);
   if (reaction.message.id == '451817062831095818'){
     if (reaction.emoji.id == dEmote.id){
