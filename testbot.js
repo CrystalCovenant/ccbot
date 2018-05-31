@@ -147,9 +147,8 @@ client.on('voiceStateUpdate', (oldMember, member) => {
     logChannel.send('<@'+member.id + '> has joined the server as a guest');
   } else {
     if (member.voiceChannelID == undefined){
-      console.log(clonnedChannels);
       if (clonnedChannels.indexOf(oldMember.voiceChannelID) > -1){
-        if (oldMember.voiceChannel.members.array().length() == 0){
+        if (oldMember.voiceChannel.members.array().length == 0){
           oldMember.voiceChannel.delete();
         }
 
