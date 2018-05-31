@@ -132,6 +132,7 @@ client.on('message', msg => {
 
   if (msg.content == '-destinypve'){
     var pveChannel = client.guilds.get('143058431488557056').channels.get('400364097310556164');
+    console.log(pveChannel.position);
     pveChannel.clone('PvE Fireteam ' +(d2pveChannels.length+1)).then( channel => {
       channel.setParent(pveChannel.parentID).then(() => {
         var pos = d2pveChannels.length+1;
