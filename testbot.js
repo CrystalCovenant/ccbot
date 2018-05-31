@@ -171,8 +171,6 @@ client.on('message', msg => {
     });
   }
 
-  
-
 });
 
 client.on('voiceStateUpdate', (oldMember, member) => {
