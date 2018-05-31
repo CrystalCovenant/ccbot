@@ -18,12 +18,13 @@ client.on('ready', () => {
   var dEmote = client.emojis.find('name', 'Destiny2');
   var mhEmote = client.emojis.find('name', 'MonsterHunter');
   var ubiEmote = client.emojis.find('name', 'Ubisoft');
-  botChannel.send('Remove and add your own roles!')
-    .then( message => {
-      message.react(dEmote.id);
-      message.react(ubiEmote.id);
-      message.react(mhEmote.id);
-    });
+  // botChannel.send('Remove and add your own roles!')
+  //   .then( message => {
+  //     message.react(dEmote.id);
+  //     message.react(ubiEmote.id);
+  //     message.react(mhEmote.id);
+  //   });
+  botChannel.fetchMessages();
   
 
   setInterval(function(){
