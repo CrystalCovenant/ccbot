@@ -240,7 +240,7 @@ client.on('guildMemberRemove', member => {
 
 client.on('messageReactionAdd', (reaction, user) => {
   var member = client.guilds.get('143058431488557056').members.get(user.id);
-  if (reaction.message.id == '451817062831095818'){
+  if (reaction.message.id == '451839276058017792'){
     if (reaction.emoji.id == dEmote.id){
       var role = reaction.message.guild.roles.find('name', 'Guardian');
       if (member.roles.has(role.id)){
@@ -277,7 +277,7 @@ client.on('messageReactionAdd', (reaction, user) => {
 
 client.on('messageReactionRemove', (reaction, user) => {
   var member = client.guilds.get('143058431488557056').members.get(user.id);
-  if (reaction.message.id == '451817062831095818'){
+  if (reaction.message.id == '451839276058017792'){
     if (reaction.emoji.id == dEmote.id){
       var role = reaction.message.guild.roles.find('name', 'Guardian');
       if (!member.roles.has(role.id)){
