@@ -132,10 +132,9 @@ client.on('message', msg => {
 
   if (msg.content == '-destinypve'){
     var pveChannel = client.guilds.get('143058431488557056').channels.get('400364097310556164');
-    console.log(pveChannel.position);
     pveChannel.clone('PvE Fireteam ' +(d2pveChannels.length+1)).then( channel => {
       channel.setParent(pveChannel.parentID).then(() => {
-        var pos = d2pveChannels.length+1;
+        var pos = pveChannel.position + d2pveChannels.length;
         channel.setPosition(pos);
       });
       
@@ -150,10 +149,7 @@ client.on('message', msg => {
     var pvpChannel = client.guilds.get('143058431488557056').channels.get('400364097310556164');
     pvpChannel.clone('PvP Fireteam ' +(d2pvpChannels.length+1)).then( channel => {
       channel.setParent(pvpChannel.parentID).then(() => {
-        var pos = d2pveChannels.length+1;
-        pos += 2;
-        pos += d2raidChannels.length+1;
-        pos += d2pvpChannels.length+1;
+        var pos = pvpChannel.position + d2pvpChannels.length;
         channel.setPosition(pos);  
       });
       msg.member.setVoiceChannel(channel).then(() => {
@@ -167,9 +163,7 @@ client.on('message', msg => {
     var raidChannel = client.guilds.get('143058431488557056').channels.get('400364097310556164');
     raidChannel.clone('Raid Fireteam ' +(d2raidChannels.length+1)).then( channel => {
       channel.setParent(raidChannel.parentID).then(() => {
-        var pos = d2pveChannels.length+1;
-        pos += 2;
-        pos += d2raidChannels.length+1;
+        var pos = raidChannel.position + d2raidChannels.length;
         channel.setPosition(pos);  
       });
      
