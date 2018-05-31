@@ -276,7 +276,7 @@ client.on('messageReactionRemove', (reaction, user) => {
   if (reaction.message.id == '451817062831095818'){
     if (reaction.emoji.id == dEmote.id){
       var role = reaction.message.guild.roles.find('name', 'Guardian');
-      if (member.roles.has(role.id)){
+      if (!member.roles.has(role.id)){
         botChannel.send('<@'+user.id + '> Does not have the Guardian Role.').then(function(message){ message.delete(5000); });
       } else {
         member.removeRole(role).catch(console.error);
@@ -286,7 +286,7 @@ client.on('messageReactionRemove', (reaction, user) => {
       }
     } else if (reaction.emoji.id == mhEmote.id){
       var role = reaction.message.guild.roles.find('name', 'Monster Hunter');
-      if (member.roles.has(role.id)){
+      if (!member.roles.has(role.id)){
         botChannel.send('<@'+user.id + '> Does not have the Monster Hunter Role.').then(function(message){ message.delete(5000); });
       } else {
         member.removeRole(role).catch(console.error);
@@ -296,7 +296,7 @@ client.on('messageReactionRemove', (reaction, user) => {
       }
     } else if (reaction.emoji.id == ubiEmote.id){
       var role = reaction.message.guild.roles.find('name', 'Operator');
-      if (member.roles.has(role.id)){
+      if (!member.roles.has(role.id)){
         botChannel.send('<@'+user.id + '> Does not have the Operator Role.').then(function(message){ message.delete(5000); });
       } else {
         member.removeRole(role).catch(console.error);
