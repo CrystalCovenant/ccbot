@@ -36,6 +36,8 @@ client.on('ready', () => {
   // botChannel.send("Bot Commands:\n\n`-inviteguest` - Creates a 24 hour temporary invite to the Discord as a Guest");
   botChannel.fetchMessage('451839276058017792');
 
+  botChannel.fetchMessage('451845699693314068').then(msg => { msg.edit("\nBot Commands:\n\n`-inviteguest` - Creates a 24 hour temporary invite to the Discord as a Guest\n\n"); });
+
   setInterval(function(){
     var role = client.guilds.get('143058431488557056').roles.find('name', 'Guest');
     var membersInRole = role.members.array();
