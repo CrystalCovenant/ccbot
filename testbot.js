@@ -271,6 +271,8 @@ client.on('messageReactionAdd', (reaction, user) => {
         botChannel.send('<@'+user.id + '> Operator role added.').then(function(message){ message.delete(5000); });
         //add
       }
+    } else {
+      reaction.remove(user);
     }
   }
 });
