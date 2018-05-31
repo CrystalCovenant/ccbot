@@ -216,6 +216,13 @@ client.on('guildMemberRemove', member => {
   logChannel.send('<@'+member.id + '> has left the server');
 });
 
+client.on('messageReactionAdd', (reaction, user) => {
+  if (reaction.message.id == '451804175513419786'){
+    var testChannel = client.channels.get('377877178890715142');
+    testChannel.send('Added a reaction');
+  }
+});
+
 client.login('NDQ4OTY3MjQ1NTI4NDMyNjQx.Ded1hw.e5QHDpzY_T6GxJ208rewtvjGk60');
 
 
