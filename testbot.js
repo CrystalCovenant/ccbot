@@ -239,7 +239,7 @@ client.on('messageReactionAdd', (reaction, user) => {
     if (reaction.emoji.id == dEmote.id){
       var role = reaction.message.guild.roles.find('name', 'Guardian');
       botChannel.send('Found Role: ' + role.id);
-      if (user.roles.has(role.id)){
+      if (reaction.message.member.roles.has(role.id)){
         botChannel.send('remove');
         // botChannel.send('<@'+user.id + '> Already has the Guadian Role.').then(function(message){ message.delete(5000); });
       } else {
