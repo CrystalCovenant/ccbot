@@ -200,6 +200,7 @@ client.on('message', msg => {
     // msg.channel.send(boisChannel.id);
     boisChannel.clone('Cloned channel').then(channel => {
       channel.setParent(boisChannel.parentID);
+      msg.member.setVoiceChannel(channel);
     });
   }
 
