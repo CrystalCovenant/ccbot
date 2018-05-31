@@ -10,9 +10,9 @@ const guildID = '143058431488557056';
 const hour = 1000 * 60 * 60;
 
 var clonnedChannels = [];
-var d2pvpChannels = [ '400005848069308416', '440943655914831872' ];
-var d2pveChannels = [ '400364097310556164', '445681910711320579' ];
-var d2raidChannels = [ '444537241671434240', '444537271098671104' ];
+var d2pvpChannels = [ '400005848069308416' ];
+var d2pveChannels = [ '400364097310556164' ];
+var d2raidChannels = [ '444537241671434240' ];
 
 var dEmote = null;
 var mhEmote = null;
