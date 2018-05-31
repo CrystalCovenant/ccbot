@@ -251,7 +251,7 @@ client.on('messageReactionAdd', (reaction, user) => {
         }
       }
     }
-  });
+  }).catch(error => {console.log(error)});
   
 });
 
