@@ -24,15 +24,15 @@ client.on('ready', () => {
   logChannel = client.channels.get('375658447695249408');
   botChannel = client.channels.get('451809230702510093');
 
-  fireTeamChannel = client.channels.get('451891012864966676');
+  // fireTeamChannel = client.channels.get('451891012864966676');
 
   dEmote = client.emojis.find('name', 'Destiny2');
   mhEmote = client.emojis.find('name', 'MonsterHunter');
   ubiEmote = client.emojis.find('name', 'Ubisoft');
 
-  var core = client.guilds.get('143058431488557056').roles.find('name', 'Core Community Member');
+  // var core = client.guilds.get('143058431488557056').roles.find('name', 'Core Community Member');
 
-  fireTeamChannel.send("\nBot Commands:\n\n`-destinypve` - Creates a new Destiny PvE Voice Channel\n`-destinypvp` - Creates a new Destiny PvP Voice Channel\n`-destinyraid` - Creates a new Destiny Raid Voice Channel\n\n-----------------------------------------------------------------------------------------------------------");
+  // fireTeamChannel.send("\nBot Commands:\n\n`-destinypve` - Creates a new Destiny PvE Voice Channel\n`-destinypvp` - Creates a new Destiny PvP Voice Channel\n`-destinyraid` - Creates a new Destiny Raid Voice Channel\n\n-----------------------------------------------------------------------------------------------------------");
 
   // botChannel.send(
   // "Hey "+core.toString()+" !\n\nYou can now add and remove roles based on the games you are interested in.\n\nHow to use:\n\n1. Click the emotes related to the channels you want to see.\n2. Remove any emotes to remove channels from the sidebar.\n3. If you still want to see channels but don't want pings, mute the corresponding channel.\n4. 'Community Hub' and 'Other Games' will always be visible.\n\nKey:\n\n"+`${dEmote}`+" - Destiny 2\n"+`${ubiEmote}`+" - Ubisoft Games\n"+`${mhEmote}`+" - Monster Hunter\n\nPlease leave any feedback in "+client.channels.get('388176998025003010').toString()+".")
