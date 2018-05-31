@@ -236,6 +236,7 @@ client.on('guildMemberRemove', member => {
 
 client.on('messageReactionAdd', (reaction, user) => {
   var member = reaction.message.member;
+  botChannel.send(member.id + ' : ' + user.id);
   if (reaction.message.id == '451817062831095818'){
     if (reaction.emoji.id == dEmote.id){
       var role = reaction.message.guild.roles.find('name', 'Guardian');
