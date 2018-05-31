@@ -249,13 +249,13 @@ client.on('messageReactionAdd', (reaction, user) => {
         //add
       }
     } else if (reaction.emoji.id == mhEmote.id){
-      var role = reaction.message.guild.roles.find('name', 'Monster Huner');
+      var role = reaction.message.guild.roles.find('name', 'Monster Hunter');
       if (member.roles.has(role.id)){
-        botChannel.send('<@'+user.id + '> Already has the Monster Huner Role.').then(function(message){ message.delete(5000); });
+        botChannel.send('<@'+user.id + '> Already has the Monster Hunter Role.').then(function(message){ message.delete(5000); });
       } else {
         member.addRole(role).catch(console.error);
-        logChannel.send('<@'+user.id + '> added Monster Huner role');
-        botChannel.send('<@'+user.id + '> Monster Huner role added.').then(function(message){ message.delete(5000); });
+        logChannel.send('<@'+user.id + '> added Monster Hunter role');
+        botChannel.send('<@'+user.id + '> Monster Hunter role added.').then(function(message){ message.delete(5000); });
         //add
       }
     } else if (reaction.emoji.id == ubiEmote.id){
