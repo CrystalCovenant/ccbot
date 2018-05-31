@@ -210,7 +210,7 @@ client.on('voiceStateUpdate', (oldMember, member) => {
 
       if (pve !== 1){
         d2pveChannels.splice(pve, 1);
-      } else if (pve !== 1){
+      } else if (pvp !== 1){
         d2pvpChannels.splice(pvp, 1);
       } else if (raid !== 1){
         d2raidChannels.splice(raid, 1);
