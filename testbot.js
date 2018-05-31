@@ -235,12 +235,11 @@ client.on('guildMemberRemove', member => {
 });
 
 client.on('messageReactionAdd', (reaction, user) => {
-  var testChannel = client.channels.get('377877178890715142');
-  testChannel.send(reaction.message.id);
-  // if (reaction.message.id == '451808275256836117'){
-    
-    testChannel.send('Added a reaction');
-  // }
+  if (reaction.message.id == '451817062831095818'){
+    if (reaction.emoji.id == dEmote.id){
+      logChannel.send('<@'+user.id + '> added the destiny role.');
+    }
+  }
 });
 
 client.login('NDQ4OTY3MjQ1NTI4NDMyNjQx.Ded1hw.e5QHDpzY_T6GxJ208rewtvjGk60');
