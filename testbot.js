@@ -209,21 +209,17 @@ client.on('voiceStateUpdate', (oldMember, member) => {
       var pvp = d2pvpChannels.indexOf(oldMember.voiceChannelID);
       var raid = d2raidChannels.indexOf(oldMember.voiceChannelID);
       if (i !== 1){
-        clonnedChannels.splice(i, 1);
+        clonnedChannels = clonnedChannels.splice(i, 1);
       }
 
-      console.log(oldMember.voiceChannelID);
-      console.log(d2pveChannels);
-      console.log(pve);
-
       if (pve !== 1){
-        d2pveChannels.splice(pve, 1);
+        d2pveChannels = d2pveChannels.splice(pve, 1);
       } 
       if (pvp !== 1){
-        d2pvpChannels.splice(pvp, 1);
+        d2pvpChannels = d2pvpChannels.splice(pvp, 1);
       } 
       if (raid !== 1){
-        d2raidChannels.splice(raid, 1);
+        d2raidChannels = d2raidChannels.splice(raid, 1);
       }
       oldMember.voiceChannel.delete();
     }
