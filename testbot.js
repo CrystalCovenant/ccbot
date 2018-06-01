@@ -138,6 +138,7 @@ client.on('message', msg => {
     var pveChannel = client.guilds.get('143058431488557056').channels.get('400364097310556164');
     pveChannel.clone('PvE Fireteam ' +(d2pveChannels.length+1)).then( channel => {
       channel.setParent(pveChannel.parentID).then(() => {
+        console.log(d2pveChannels.length);
         var pos = pveChannel.position - 1 + d2pveChannels.length;
         channel.setPosition(pos);
       });
