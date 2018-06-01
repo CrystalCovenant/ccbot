@@ -138,8 +138,7 @@ client.on('message', msg => {
     var pveChannel = client.guilds.get('143058431488557056').channels.get('400364097310556164');
     pveChannel.clone('PvE Fireteam ' +(d2pveChannels.length+1)).then( channel => {
       channel.setParent(pveChannel.parentID).then(() => {
-        console.log(d2pveChannels.length);
-        var pos = pveChannel.position - 1 + d2pveChannels.length;
+        var pos = pveChannel.position + d2pveChannels.length;
         channel.setPosition(pos);
       });
       
@@ -154,7 +153,7 @@ client.on('message', msg => {
     var pvpChannel = client.guilds.get('143058431488557056').channels.get('400364097310556164');
     pvpChannel.clone('PvP Fireteam ' +(d2pvpChannels.length+1)).then( channel => {
       channel.setParent(pvpChannel.parentID).then(() => {
-        var pos = pvpChannel.position - 1 + d2pvpChannels.length;
+        var pos = pvpChannel.position + d2pvpChannels.length;
         channel.setPosition(pos);  
       });
       msg.member.setVoiceChannel(channel).then(() => {
@@ -168,7 +167,7 @@ client.on('message', msg => {
     var raidChannel = client.guilds.get('143058431488557056').channels.get('400364097310556164');
     raidChannel.clone('Raid Fireteam ' +(d2raidChannels.length+1)).then( channel => {
       channel.setParent(raidChannel.parentID).then(() => {
-        var pos = raidChannel.position - 1 + d2raidChannels.length;
+        var pos = raidChannel.position + d2raidChannels.length;
         channel.setPosition(pos);  
       });
      
@@ -212,6 +211,10 @@ client.on('voiceStateUpdate', (oldMember, member) => {
       if (i !== 1){
         clonnedChannels.splice(i, 1);
       }
+
+      console.log(oldMember.voiceChannelID);
+      console.log(d2pveChannels);
+      console.log(pve);
 
       if (pve !== 1){
         d2pveChannels.splice(pve, 1);
