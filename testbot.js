@@ -153,8 +153,7 @@ client.on('message', msg => {
     var pvpChannel = client.guilds.get('143058431488557056').channels.get('400364097310556164');
     pvpChannel.clone('PvP Fireteam ' +(d2pvpChannels.length+1)).then( channel => {
       channel.setParent(pvpChannel.parentID).then(() => {
-        var pos = pvpChannel.position - 1 + d2pvpChannels.length;
-        console.log(pos);
+        var pos = pvpChannel.position + d2pvpChannels.length;
         channel.setPosition(pos);  
       });
       msg.member.setVoiceChannel(channel).then(() => {
