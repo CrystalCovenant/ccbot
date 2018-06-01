@@ -212,6 +212,10 @@ client.on('voiceStateUpdate', (oldMember, member) => {
         clonnedChannels = clonnedChannels.splice(i, 1);
       }
 
+      console.log(oldMember.voiceChannelID);
+      console.log(d2pveChannels);
+      console.log(pve);
+
       if (pve !== 1){
         d2pveChannels = d2pveChannels.splice(pve, 1);
       } 
