@@ -341,6 +341,7 @@ client.on('messageReactionRemove', (reaction, user) => {
   if (reaction.message.id == '451839276058017792'){
     if (reaction.emoji.id == dEmote.id){
       var role = reaction.message.guild.roles.find('name', 'Guardian');
+      errorChannel.send('role: '+role.id + ' - ' + member.roles.has(role.id));
       if (!member.roles.has(role.id)){
         botChannel.send('<@'+user.id + '> Does not have the Guardian Role.').then(function(message){ message.delete(5000); });
       } else {
