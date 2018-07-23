@@ -216,7 +216,7 @@ client.on('message', msg => {
     var huntingPartyChannel = client.guilds.get('143058431488557056').channels.get('388074840483037203');
     huntingPartyChannel.clone('Hunting Party ' +(huntingPartyChannels.length+1)).then( channel => {
       channel.setParent(huntingPartyChannel.parentID).then(() => {
-        var pos = 5 + huntingPartyChannels.length;
+        var pos = 2 + huntingPartyChannels.length;
         channel.setPosition(pos);
       });
      
