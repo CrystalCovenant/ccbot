@@ -6,6 +6,7 @@ const botId = '448967245528432641';
 const botName = 'CC.bot'
 var logChannel = null;
 var botChannel = null;
+var errorChannel = null;
 const guildID = '143058431488557056';
 const hour = 1000 * 60 * 60;
 
@@ -13,6 +14,7 @@ var clonnedChannels = [];
 var d2pvpChannels = [ '400005848069308416' ];
 var d2pveChannels = [ '400364097310556164' ];
 var d2raidChannels = [ '444537241671434240' ];
+var huntingPartyChannels = [ '388074840483037203' ];
 
 var dEmote = null;
 var mhEmote = null;
@@ -23,6 +25,7 @@ client.on('ready', () => {
   client.user.setUsername(botName);
   logChannel = client.channels.get('375658447695249408');
   botChannel = client.channels.get('451809230702510093');
+  errorChannel = client.channels.get('471037279327092737');
 
   // fireTeamChannel = client.channels.get('451891012864966676');
 
@@ -125,6 +128,27 @@ client.on('message', msg => {
     }
   }
 
+  if (msg.content == '-invbulk'){
+    if (msg.member.roles.find('name', 'Admin')){
+      var guestChannel = client.channels.get('143088944643440641');
+      guestChannel.createInvite({
+        maxAge: 0,
+        maxUsers: 999,
+        unique: true
+      })
+      .then(function(invite){
+        msg.channel.send(invite.url).then(function(newMessage){
+          // newMessage.delete(1000 * 900);
+        });
+        
+        logChannel.send('<@'+msg.member.id + '> has created a member invite link on channel: '+msg.channel.name);
+      });
+    } else {
+      msg.channel.send('To create an invite link please use -inviteguest');
+      logChannel.send('<@'+msg.member.id + '> has attempted to invite a member');
+    }
+  }
+
   if (msg.content == '-tim'){
     var tim1 = client.emojis.find('name', 'tim1');
     var tim2 = client.emojis.find('name', 'tim2');
@@ -175,7 +199,24 @@ client.on('message', msg => {
         clonnedChannels.push(channel.id);
         d2raidChannels.push(channel.id);
       }).catch(e => {
-        console.log(e);
+        errorChannel.send(e);
+      });
+    });
+  }
+
+  if (msg.content == '-huntingparty'){
+    var huntingPartyChannel = client.guilds.get('143058431488557056').channels.get('470865032314355723');
+    huntingPartyChannel.clone('Hunting Party ' +(huntingPartyChannels.length+1)).then( channel => {
+      channel.setParent(huntingPartyChannel.parentID).then(() => {
+        var pos = 3 + huntingPartyChannels.length;
+        channel.setPosition(pos);
+      });
+     
+      msg.member.setVoiceChannel(channel).then(() => {
+        clonnedChannels.push(channel.id);
+        huntingPartyChannels.push(channel.id);
+      }).catch(e => {
+        errorChannel.send(e);
       });
     });
   }
@@ -208,6 +249,8 @@ client.on('voiceStateUpdate', (oldMember, member) => {
       var pve = d2pveChannels.indexOf(oldMember.voiceChannelID);
       var pvp = d2pvpChannels.indexOf(oldMember.voiceChannelID);
       var raid = d2raidChannels.indexOf(oldMember.voiceChannelID);
+      var huntingParty = huntingPartyChannels.indexOf(oldMember.voiceChannelID);
+
       if (i !== -1){
          clonnedChannels.splice(i, 1);
       }
@@ -221,14 +264,18 @@ client.on('voiceStateUpdate', (oldMember, member) => {
       if (raid !== -1){
          d2raidChannels.splice(raid, 1);
       }
+      if (huntingParty !== -1){
+         huntingPartyChannels.splice(huntingParty, 1);
+      }
       oldMember.voiceChannel.delete();
     }
   }
 });
 
 client.on('guildMemberAdd', member => {
+  var role = client.guilds.get('143058431488557056').roles.find('name', 'Guest');
   setTimeout(function(){
-    if (member.roles.array().length == 1){
+    if (member.roles.array().length == 1 || !member.roles.has(role.id)){
       var guardian = client.guilds.get('143058431488557056').roles.find('name', 'Guardian');
       var core = client.guilds.get('143058431488557056').roles.find('name', 'Core Community Member');
       var operator = client.guilds.get('143058431488557056').roles.find('name', 'Operator');
@@ -252,7 +299,7 @@ client.on('messageReactionAdd', (reaction, user) => {
       if (member.roles.has(role.id)){
         botChannel.send('<@'+user.id + '> Already has the Guardian Role.').then(function(message){ message.delete(5000); });
       } else {
-        member.addRole(role).catch(console.error);
+        member.addRole(role).catch(err => errorChannel.send(err));
         logChannel.send('<@'+user.id + '> added Guardian role');
         botChannel.send('<@'+user.id + '> Guardian role added.').then(function(message){ message.delete(5000); });
         //add
@@ -262,7 +309,7 @@ client.on('messageReactionAdd', (reaction, user) => {
       if (member.roles.has(role.id)){
         botChannel.send('<@'+user.id + '> Already has the Monster Hunter Role.').then(function(message){ message.delete(5000); });
       } else {
-        member.addRole(role).catch(console.error);
+        member.addRole(role).catch(err => errorChannel.send(err));
         logChannel.send('<@'+user.id + '> added Monster Hunter role');
         botChannel.send('<@'+user.id + '> Monster Hunter role added.').then(function(message){ message.delete(5000); });
         //add
@@ -272,7 +319,7 @@ client.on('messageReactionAdd', (reaction, user) => {
       if (member.roles.has(role.id)){
         botChannel.send('<@'+user.id + '> Already has the Operator Role.').then(function(message){ message.delete(5000); });
       } else {
-        member.addRole(role).catch(console.error);
+        member.addRole(role).catch(err => errorChannel.send(err));
         logChannel.send('<@'+user.id + '> added Operator role');
         botChannel.send('<@'+user.id + '> Operator role added.').then(function(message){ message.delete(5000); });
         //add
@@ -291,7 +338,7 @@ client.on('messageReactionRemove', (reaction, user) => {
       if (!member.roles.has(role.id)){
         botChannel.send('<@'+user.id + '> Does not have the Guardian Role.').then(function(message){ message.delete(5000); });
       } else {
-        member.removeRole(role).catch(console.error);
+        member.removeRole(role).catch(err => errorChannel.send(err));
         logChannel.send('<@'+user.id + '> removed Guardian role');
         botChannel.send('<@'+user.id + '> Guardian role removed.').then(function(message){ message.delete(5000); });
         //add
@@ -301,7 +348,7 @@ client.on('messageReactionRemove', (reaction, user) => {
       if (!member.roles.has(role.id)){
         botChannel.send('<@'+user.id + '> Does not have the Monster Hunter Role.').then(function(message){ message.delete(5000); });
       } else {
-        member.removeRole(role).catch(console.error);
+        member.removeRole(role).catch(err => errorChannel.send(err));
         logChannel.send('<@'+user.id + '> removed Monster Hunter role');
         botChannel.send('<@'+user.id + '> Monster Hunter role removed.').then(function(message){ message.delete(5000); });
         //add
@@ -311,7 +358,7 @@ client.on('messageReactionRemove', (reaction, user) => {
       if (!member.roles.has(role.id)){
         botChannel.send('<@'+user.id + '> Does not have the Operator Role.').then(function(message){ message.delete(5000); });
       } else {
-        member.removeRole(role).catch(console.error);
+        member.removeRole(role).catch(err => errorChannel.send(err));
         logChannel.send('<@'+user.id + '> removed Operator role');
         botChannel.send('<@'+user.id + '> Operator role removed.').then(function(message){ message.delete(5000); });
         //add
