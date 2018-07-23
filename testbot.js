@@ -34,8 +34,8 @@ client.on('ready', () => {
   ubiEmote = client.emojis.find('name', 'Ubisoft');
 
 
-  let textChannel = client.channels.get('470865032314355723');
-  textChannel.send("Bot Commands:\n\n`-huntingparty` - Creates a new Hunting Party Voice Channel\n\n-----------------------------------------------------------------------------------------------------------");
+  // let textChannel = client.channels.get('470865032314355723');
+  // textChannel.send("Bot Commands:\n\n`-huntingparty` - Creates a new Hunting Party Voice Channel\n\n-----------------------------------------------------------------------------------------------------------");
 
   // var core = client.guilds.get('143058431488557056').roles.find('name', 'Core Community Member');
 
