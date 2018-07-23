@@ -171,6 +171,8 @@ client.on('message', msg => {
         d2pveChannels.push(channel.id);
       });
     });
+
+    msg.delete(2000);
   }
 
   if (msg.content == '-destinypvp'){
@@ -185,6 +187,7 @@ client.on('message', msg => {
         d2pvpChannels.push(channel.id);
       });
     });
+    msg.delete(2000);
   }
 
   if (msg.content == '-destinyraid'){
@@ -202,13 +205,14 @@ client.on('message', msg => {
         errorChannel.send(e);
       });
     });
+    msg.delete(2000);
   }
 
   if (msg.content == '-huntingparty'){
     var huntingPartyChannel = client.guilds.get('143058431488557056').channels.get('388074840483037203');
     huntingPartyChannel.clone('Hunting Party ' +(huntingPartyChannels.length+1)).then( channel => {
       channel.setParent(huntingPartyChannel.parentID).then(() => {
-        var pos = 3 + huntingPartyChannels.length;
+        var pos = 4 + huntingPartyChannels.length;
         channel.setPosition(pos);
       });
      
@@ -219,6 +223,7 @@ client.on('message', msg => {
         errorChannel.send(e);
       });
     });
+    msg.delete(2000);
   }
 
   if (msg.channel.name != 'test') return;
