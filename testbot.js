@@ -301,6 +301,7 @@ client.on('messageReactionAdd', (reaction, user) => {
   if (reaction.message.id == '451839276058017792'){
     if (reaction.emoji.id == dEmote.id){
       var role = reaction.message.guild.roles.find('name', 'Guardian');
+      errorChannel.send('role: '+role.toString())
       if (member.roles.has(role.id)){
         botChannel.send('<@'+user.id + '> Already has the Guardian Role.').then(function(message){ message.delete(5000); });
       } else {
