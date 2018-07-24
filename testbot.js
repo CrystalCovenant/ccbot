@@ -19,6 +19,7 @@ var huntingPartyChannels = [ '388074840483037203' ];
 var dEmote = null;
 var mhEmote = null;
 var ubiEmote = null;
+var noManSkyEmote = null;
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -32,7 +33,7 @@ client.on('ready', () => {
   dEmote = client.emojis.find('name', 'Destiny2');
   mhEmote = client.emojis.find('name', 'MonsterHunter');
   ubiEmote = client.emojis.find('name', 'Ubisoft');
-
+  noManSkyEmote = client.emojis.find('name', 'NoMansSky')
 
   // let textChannel = client.channels.get('470865032314355723');
   // textChannel.send("Bot Commands:\n\n`-huntingparty` - Creates a new Hunting Party Voice Channel\n\n-----------------------------------------------------------------------------------------------------------");
@@ -50,7 +51,11 @@ client.on('ready', () => {
   //   });
   // botChannel.fetchMessage('451845699693314068').then(msg => { msg.edit("\nBot Commands:\n\n`-inviteguest` - Creates a 24 hour temporary invite to the Discord as a Guest\n`-destinypve` - Creates a new Destiny PvE Voice Channel\n`-destinypvp` - Creates a new Destiny PvP Voice Channel\n`-destinyraid` - Creates a new Destiny Raid Voice Channel\n\n-----------------------------------------------------------------------------------------------------------"); });
   
-  botChannel.fetchMessage('451839276058017792');
+  botChannel.fetchMessage('451839276058017792').then( message => {
+    message.react(noManSkyEmote.id)
+  });
+
+
 
   setInterval(function(){
     var role = client.guilds.get('143058431488557056').roles.find('name', 'Guest');
