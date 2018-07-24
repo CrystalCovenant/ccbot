@@ -339,6 +339,16 @@ client.on('messageReactionAdd', (reaction, user) => {
         botChannel.send('<@'+user.id + '> Operator role added.').then(function(message){ message.delete(5000); });
         //add
       }
+    } else if (reaction.emoji.id == noManSkyEmote.id){
+      var role = reaction.message.guild.roles.find('name', 'Explorer');
+      if (member.roles.has(role.id)){
+        botChannel.send('<@'+user.id + '> Already has the Explorer Role.').then(function(message){ message.delete(5000); });
+      } else {
+        member.addRole(role).catch(err => errorChannel.send(err));
+        logChannel.send('<@'+user.id + '> added Explorer role');
+        botChannel.send('<@'+user.id + '> Explorer role added.').then(function(message){ message.delete(5000); });
+        //add
+      }
     } else {
       reaction.remove(user);
     }
@@ -377,6 +387,16 @@ client.on('messageReactionRemove', (reaction, user) => {
         member.removeRole(role).catch(err => errorChannel.send(err));
         logChannel.send('<@'+user.id + '> removed Operator role');
         botChannel.send('<@'+user.id + '> Operator role removed.').then(function(message){ message.delete(5000); });
+        //add
+      }
+    } else if (reaction.emoji.id == noManSkyEmote.id){
+      var role = reaction.message.guild.roles.find('name', 'Explorer');
+      if (!member.roles.has(role.id)){
+        botChannel.send('<@'+user.id + '> Does not have the Explorer Role.').then(function(message){ message.delete(5000); });
+      } else {
+        member.removeRole(role).catch(err => errorChannel.send(err));
+        logChannel.send('<@'+user.id + '> removed Explorer role');
+        botChannel.send('<@'+user.id + '> Explorer role removed.').then(function(message){ message.delete(5000); });
         //add
       }
     }
