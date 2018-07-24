@@ -51,9 +51,9 @@ client.on('ready', () => {
   //   });
   // botChannel.fetchMessage('451845699693314068').then(msg => { msg.edit("\nBot Commands:\n\n`-inviteguest` - Creates a 24 hour temporary invite to the Discord as a Guest\n`-destinypve` - Creates a new Destiny PvE Voice Channel\n`-destinypvp` - Creates a new Destiny PvP Voice Channel\n`-destinyraid` - Creates a new Destiny Raid Voice Channel\n\n-----------------------------------------------------------------------------------------------------------"); });
   
-  botChannel.fetchMessage('451839276058017792').then( message => {
-    message.react(noManSkyEmote.id)
-  });
+  // botChannel.fetchMessage('451839276058017792').then( message => {
+  //   message.react(noManSkyEmote.id)
+  // });
 
 
 
