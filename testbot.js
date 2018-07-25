@@ -407,11 +407,13 @@ client.on('messageReactionRemove', (reaction, user) => {
   }
 });
 
-client.login(fetchKey()).catch(err => console.log(fetchKey()));
-
 fetchKey = async() => {
   fetch('apikey.txt').then( response => response.text()).then(text =>{return text})
 }
+
+client.login(this.fetchKey()).catch(err => console.log(this.fetchKey()));
+
+
 
 
 //448967245528432641
