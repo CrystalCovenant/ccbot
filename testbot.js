@@ -6,7 +6,7 @@ require('isomorphic-fetch');
 var fs = require('fs');
 
 let Funcs = class {
-  async fetchKey() {
+  fetchKey() {
     let text = fs.readFileSync('./apikey.txt').toString('utf-8').split("\n");
     return text[0];
   }
