@@ -53,7 +53,7 @@ client.on('ready', () => {
   // let textChannel = client.channels.get('470865032314355723');
   // textChannel.send("Bot Commands:\n\n`-huntingparty` - Creates a new Hunting Party Voice Channel\n\n-----------------------------------------------------------------------------------------------------------");
 
-  // var core = client.guilds.get('143058431488557056').roles.find('name', 'Core Community Member');
+  var core = client.guilds.get('143058431488557056').roles.find('name', 'Core Community Member');
 
   // fireTeamChannel.send("\nBot Commands:\n\n`-destinypve` - Creates a new Destiny PvE Voice Channel\n`-destinypvp` - Creates a new Destiny PvP Voice Channel\n`-destinyraid` - Creates a new Destiny Raid Voice Channel\n\n-----------------------------------------------------------------------------------------------------------");
 
