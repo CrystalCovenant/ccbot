@@ -407,7 +407,7 @@ client.on('messageReactionRemove', (reaction, user) => {
   }
 });
 
-client.login('NDQ4OTY3MjQ1NTI4NDMyNjQx.Ded1hw.e5QHDpzY_T6GxJ208rewtvjGk60');
+client.login('NDQ4OTY3MjQ1NTI4NDMyNjQx.DjpLuQ.hpDb0_fYXo1d1pWLVi_hFbcqwro');
 
 
 //448967245528432641
