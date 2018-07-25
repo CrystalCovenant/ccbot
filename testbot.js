@@ -419,7 +419,7 @@ client.on('messageReactionRemove', (reaction, user) => {
   }
 });
 
-client.login(funcs.fetchKey()).catch(err => console.log(funcs.fetchKey()));
+client.login(funcs.fetchKey()).catch(err => console.log(err));
 
 
 
