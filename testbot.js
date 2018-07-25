@@ -1,8 +1,6 @@
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
 var fs = require('fs');
 
 let Funcs = class {
@@ -322,7 +320,7 @@ client.on('guildMemberRemove', member => {
 });
 
 client.on('messageReactionAdd', (reaction, user) => {
-  errorChannel.send('reaction');
+  logChannel.send('reaction');
   var member = client.guilds.get('143058431488557056').members.get(user.id);
   if (reaction.message.id == '451839276058017792'){
     if (reaction.emoji.id == dEmote.id){
