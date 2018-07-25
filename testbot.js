@@ -1,10 +1,12 @@
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 
 let Funcs = class {
   async fetchKey() {
-    fetch('apikey.txt').then( response => response.text()).then(text =>{return text})
+    fetch('./apikey.txt').then( response => response.text()).then(text =>{return text})
   }
 }
 
