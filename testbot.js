@@ -22,11 +22,14 @@ var ubiEmote = null;
 var noManSkyEmote = null;
 
 client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+  
   client.user.setUsername(botName);
   logChannel = client.channels.get('375658447695249408');
   botChannel = client.channels.get('451809230702510093');
   errorChannel = client.channels.get('471037279327092737');
+
+  console.log(`Logged in as ${client.user.tag}!`);
+  botChannel.send('Bot refreshed');
 
   // fireTeamChannel = client.channels.get('451891012864966676');
 
@@ -51,7 +54,8 @@ client.on('ready', () => {
   //   });
   // botChannel.fetchMessage('451845699693314068').then(msg => { msg.edit("\nBot Commands:\n\n`-inviteguest` - Creates a 24 hour temporary invite to the Discord as a Guest\n`-destinypve` - Creates a new Destiny PvE Voice Channel\n`-destinypvp` - Creates a new Destiny PvP Voice Channel\n`-destinyraid` - Creates a new Destiny Raid Voice Channel\n\n-----------------------------------------------------------------------------------------------------------"); });
   
-  // botChannel.fetchMessage('451839276058017792').then( message => {
+  botChannel.fetchMessage('451839276058017792')
+  // .then( message => {
   //   message.react(noManSkyEmote.id)
   // });
 
