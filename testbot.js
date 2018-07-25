@@ -319,56 +319,56 @@ client.on('guildMemberRemove', member => {
   logChannel.send('<@'+member.id + '> has left the server');
 });
 
-// client.on('messageReactionAdd', (reaction, user) => {
+client.on('messageReactionAdd', (reaction, user) => {
   
-//   var member = client.guilds.get('143058431488557056').members.get(user.id);
-//   if (reaction.message.id == '451839276058017792'){
-//     if (reaction.emoji.id == dEmote.id){
-//       var role = reaction.message.guild.roles.find('name', 'Guardian');
-//       // errorChannel.send('role: '+role.name + ' - ' + member.roles.has(role.id));
-//       if (member.roles.has(role.id)){
-//         botChannel.send('<@'+user.id + '> Already has the Guardian Role.').then(function(message){ message.delete(5000); });
-//       } else {
-//         member.addRole(role).catch(err => errorChannel.send(err));
-//         logChannel.send('<@'+user.id + '> added Guardian role');
-//         botChannel.send('<@'+user.id + '> Guardian role added.').then(function(message){ message.delete(5000); });
-//         //add
-//       }
-//     } else if (reaction.emoji.id == mhEmote.id){
-//       var role = reaction.message.guild.roles.find('name', 'Monster Hunter');
-//       if (member.roles.has(role.id)){
-//         botChannel.send('<@'+user.id + '> Already has the Monster Hunter Role.').then(function(message){ message.delete(5000); });
-//       } else {
-//         member.addRole(role).catch(err => errorChannel.send(err));
-//         logChannel.send('<@'+user.id + '> added Monster Hunter role');
-//         botChannel.send('<@'+user.id + '> Monster Hunter role added.').then(function(message){ message.delete(5000); });
-//         //add
-//       }
-//     } else if (reaction.emoji.id == ubiEmote.id){
-//       var role = reaction.message.guild.roles.find('name', 'Operator');
-//       if (member.roles.has(role.id)){
-//         botChannel.send('<@'+user.id + '> Already has the Operator Role.').then(function(message){ message.delete(5000); });
-//       } else {
-//         member.addRole(role).catch(err => errorChannel.send(err));
-//         logChannel.send('<@'+user.id + '> added Operator role');
-//         botChannel.send('<@'+user.id + '> Operator role added.').then(function(message){ message.delete(5000); });
-//         //add
-//       }
-//     } else if (reaction.emoji.id == noManSkyEmote.id){
-//       var role = reaction.message.guild.roles.find('name', 'Explorer');
-//       if (member.roles.has(role.id)){
-//         botChannel.send('<@'+user.id + '> Already has the Explorer Role.').then(function(message){ message.delete(5000); });
-//       } else {
-//         member.addRole(role).catch(err => errorChannel.send(err));
-//         logChannel.send('<@'+user.id + '> added Explorer role');
-//         botChannel.send('<@'+user.id + '> Explorer role added.').then(function(message){ message.delete(5000); });
-//         //add
-//       }
-//     } else {
-//       reaction.remove(user);
-//     }
-//   }
-// });
+  var member = client.guilds.get('143058431488557056').members.get(user.id);
+  if (reaction.message.id == '451839276058017792'){
+    if (reaction.emoji.id == dEmote.id){
+      var role = reaction.message.guild.roles.find('name', 'Guardian');
+      // errorChannel.send('role: '+role.name + ' - ' + member.roles.has(role.id));
+      if (member.roles.has(role.id)){
+        botChannel.send('<@'+user.id + '> Already has the Guardian Role.').then(function(message){ message.delete(5000); });
+      } else {
+        member.addRole(role).catch(err => errorChannel.send(err));
+        logChannel.send('<@'+user.id + '> added Guardian role');
+        botChannel.send('<@'+user.id + '> Guardian role added.').then(function(message){ message.delete(5000); });
+        //add
+      }
+    } else if (reaction.emoji.id == mhEmote.id){
+      var role = reaction.message.guild.roles.find('name', 'Monster Hunter');
+      if (member.roles.has(role.id)){
+        botChannel.send('<@'+user.id + '> Already has the Monster Hunter Role.').then(function(message){ message.delete(5000); });
+      } else {
+        member.addRole(role).catch(err => errorChannel.send(err));
+        logChannel.send('<@'+user.id + '> added Monster Hunter role');
+        botChannel.send('<@'+user.id + '> Monster Hunter role added.').then(function(message){ message.delete(5000); });
+        //add
+      }
+    } else if (reaction.emoji.id == ubiEmote.id){
+      var role = reaction.message.guild.roles.find('name', 'Operator');
+      if (member.roles.has(role.id)){
+        botChannel.send('<@'+user.id + '> Already has the Operator Role.').then(function(message){ message.delete(5000); });
+      } else {
+        member.addRole(role).catch(err => errorChannel.send(err));
+        logChannel.send('<@'+user.id + '> added Operator role');
+        botChannel.send('<@'+user.id + '> Operator role added.').then(function(message){ message.delete(5000); });
+        //add
+      }
+    } else if (reaction.emoji.id == noManSkyEmote.id){
+      var role = reaction.message.guild.roles.find('name', 'Explorer');
+      if (member.roles.has(role.id)){
+        botChannel.send('<@'+user.id + '> Already has the Explorer Role.').then(function(message){ message.delete(5000); });
+      } else {
+        member.addRole(role).catch(err => errorChannel.send(err));
+        logChannel.send('<@'+user.id + '> added Explorer role');
+        botChannel.send('<@'+user.id + '> Explorer role added.').then(function(message){ message.delete(5000); });
+        //add
+      }
+    } else {
+      reaction.remove(user);
+    }
+  }
+});
 
 client.on('messageReactionRemove', (reaction, user) => {
   var member = client.guilds.get('143058431488557056').members.get(user.id);
