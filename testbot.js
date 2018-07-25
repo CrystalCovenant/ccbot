@@ -29,7 +29,7 @@ client.on('ready', () => {
   errorChannel = client.channels.get('471037279327092737');
 
   console.log(`Logged in as ${client.user.tag}!`);
-  botChannel.send('Bot refreshed');
+  logChannel.send('Bot refreshed');
 
   // fireTeamChannel = client.channels.get('451891012864966676');
 
