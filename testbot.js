@@ -424,8 +424,7 @@ client.login(funcs.fetchKey()).catch(err => console.log(err));
 
 
 
-//448967245528432641
-//https://discordapp.com/api/oauth2/authorize?client_id=448967245528432641&scope=bot&permissions=8
+//https://discordapp.com/api/oauth2/authorize?client_id=&scope=bot&permissions=8
 
 /*
 
