@@ -2,6 +2,14 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+let Funcs = class {
+  async fetchKey() {
+    fetch('apikey.txt').then( response => response.text()).then(text =>{return text})
+  }
+}
+
+const funcs = new Funcs();
+
 const botId = '448967245528432641';
 const botName = 'CC.bot'
 var logChannel = null;
@@ -407,11 +415,7 @@ client.on('messageReactionRemove', (reaction, user) => {
   }
 });
 
-fetchKey = async() => {
-  fetch('apikey.txt').then( response => response.text()).then(text =>{return text})
-}
-
-client.login(this.fetchKey()).catch(err => console.log(this.fetchKey()));
+client.login(funcs.fetchKey()).catch(err => console.log(funcs.fetchKey()));
 
 
 
