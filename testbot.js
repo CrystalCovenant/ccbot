@@ -7,7 +7,7 @@ var fs = require('fs');
 
 let Funcs = class {
   async fetchKey() {
-    let text = fs.readFileSync('./apikey.txt');
+    let text = fs.readFileSync('./apikey.txt').toString('utf-8');
     return text;
   }
 }
