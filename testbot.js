@@ -3,10 +3,12 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
+var fs = require('fs');
 
 let Funcs = class {
   async fetchKey() {
-    fetch('./apikey.txt').then( response => response.text()).then(text =>{return text})
+    let text = fs.readFileSync('./apikey.txt');
+    return text;
   }
 }
 
