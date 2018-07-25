@@ -407,7 +407,7 @@ client.on('messageReactionRemove', (reaction, user) => {
   }
 });
 
-client.login(require('./apikey.txt')).catch(err => require('./apikey.txt'));
+client.login(require('./apikey.txt')).catch(err => console.log(require('./apikey.txt')));
 
 
 //448967245528432641
