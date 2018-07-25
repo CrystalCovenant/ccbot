@@ -407,7 +407,7 @@ client.on('messageReactionRemove', (reaction, user) => {
   }
 });
 
-client.login(await fetchKey()).catch(err => console.log(await fetchKey()));
+client.login(fetchKey()).catch(err => console.log(fetchKey()));
 
 fetchKey = async() => {
   fetch('apikey.txt').then( response => response.text()).then(text =>{return text})
