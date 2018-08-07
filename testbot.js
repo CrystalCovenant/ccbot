@@ -30,6 +30,7 @@ var dEmote = null;
 var mhEmote = null;
 var ubiEmote = null;
 var noManSkyEmote = null;
+var falloutEmote = null;
 
 client.on('ready', () => {
   
@@ -47,6 +48,7 @@ client.on('ready', () => {
   mhEmote = client.emojis.find('name', 'MonsterHunter');
   ubiEmote = client.emojis.find('name', 'Ubisoft');
   noManSkyEmote = client.emojis.find('name', 'NoMansSky')
+  falloutEmote = client.emojis.find('name', 'Fallout76')
 
   // let textChannel = client.channels.get('470865032314355723');
   // textChannel.send("Bot Commands:\n\n`-huntingparty` - Creates a new Hunting Party Voice Channel\n\n-----------------------------------------------------------------------------------------------------------");
@@ -65,10 +67,11 @@ client.on('ready', () => {
   // botChannel.fetchMessage('451845699693314068').then(msg => { msg.edit("\nBot Commands:\n\n`-inviteguest` - Creates a 24 hour temporary invite to the Discord as a Guest\n`-destinypve` - Creates a new Destiny PvE Voice Channel\n`-destinypvp` - Creates a new Destiny PvP Voice Channel\n`-destinyraid` - Creates a new Destiny Raid Voice Channel\n\n-----------------------------------------------------------------------------------------------------------"); });
   
   botChannel.fetchMessage('451839276058017792')
-  // .then( message => {
-  //   // 
-  //   message.edit("Hey "+core.toString()+" !\n\nYou can now add and remove roles based on the games you are interested in.\n\nHow to use:\n\n1. Click the emotes related to the channels you want to see.\n2. Remove any emotes to remove channels from the sidebar.\n3. If you still want to see channels but don't want pings, mute the corresponding channel.\n4. 'Community Hub' and 'Other Games' will always be visible.\n\nKey:\n\n"+`${dEmote}`+" - Destiny 2\n"+`${ubiEmote}`+" - Ubisoft Games\n"+`${mhEmote}`+" - Monster Hunter\n"+`${noManSkyEmote}`+" - No Mans Sky\n\nPlease leave any feedback in "+client.channels.get('388176998025003010').toString()+".").then(msg => { errorChannel.send(msg.content)}).catch(err => {errorChannel.send(err)})
-  // });
+  .then( message => {
+    // 
+    message.react(falloutEmote.id)
+    message.edit("Hey "+core.toString()+" !\n\nYou can now add and remove roles based on the games you are interested in.\n\nHow to use:\n\n1. Click the emotes related to the channels you want to see.\n2. Remove any emotes to remove channels from the sidebar.\n3. If you still want to see channels but don't want pings, mute the corresponding channel.\n4. 'Community Hub' and 'Other Games' will always be visible.\n\nKey:\n\n"+`${dEmote}`+" - Destiny 2\n"+`${ubiEmote}`+" - Ubisoft Games\n"+`${mhEmote}`+" - Monster Hunter\n"+`${noManSkyEmote}`+" - No Mans Sky\n"+`${falloutEmote}`+" - Fallout 76\n\nPlease leave any feedback in "+client.channels.get('388176998025003010').toString()+".").then(msg => { errorChannel.send(msg.content)}).catch(err => {errorChannel.send(err)})
+  });
 
 
 
@@ -365,6 +368,16 @@ client.on('messageReactionAdd', (reaction, user) => {
         botChannel.send('<@'+user.id + '> Explorer role added.').then(function(message){ message.delete(5000); });
         //add
       }
+    } else if (reaction.emoji.id == falloutEmote.id){
+      var role = reaction.message.guild.roles.find('name', 'Vault Dweller');
+      if (member.roles.has(role.id)){
+        botChannel.send('<@'+user.id + '> Already has the Vault Dweller Role.').then(function(message){ message.delete(5000); });
+      } else {
+        member.addRole(role).catch(err => errorChannel.send(err));
+        logChannel.send('<@'+user.id + '> added Vault Dweller role');
+        botChannel.send('<@'+user.id + '> Vault Dweller role added.').then(function(message){ message.delete(5000); });
+        //add
+      }
     } else {
       reaction.remove(user);
     }
@@ -413,6 +426,16 @@ client.on('messageReactionRemove', (reaction, user) => {
         member.removeRole(role).catch(err => errorChannel.send(err));
         logChannel.send('<@'+user.id + '> removed Explorer role');
         botChannel.send('<@'+user.id + '> Explorer role removed.').then(function(message){ message.delete(5000); });
+        //add
+      }
+    } else if (reaction.emoji.id == falloutEmote.id){
+      var role = reaction.message.guild.roles.find('name', 'Vault Dweller');
+      if (!member.roles.has(role.id)){
+        botChannel.send('<@'+user.id + '> Does not have the Vault Dweller Role.').then(function(message){ message.delete(5000); });
+      } else {
+        member.removeRole(role).catch(err => errorChannel.send(err));
+        logChannel.send('<@'+user.id + '> removed Vault Dweller role');
+        botChannel.send('<@'+user.id + '> Vault Dweller role removed.').then(function(message){ message.delete(5000); });
         //add
       }
     }
