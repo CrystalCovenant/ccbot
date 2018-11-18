@@ -308,12 +308,12 @@ client.on('guildMemberAdd', member => {
   var role = client.guilds.get('143058431488557056').roles.find('name', 'Guest');
   setTimeout(function(){
     if (member.roles.array().length == 1 || !member.roles.has(role.id)){
-      var guardian = client.guilds.get('143058431488557056').roles.find('name', 'Guardian');
-      var core = client.guilds.get('143058431488557056').roles.find('name', 'Core Community Member');
-      var operator = client.guilds.get('143058431488557056').roles.find('name', 'Operator');
-      var hunter = client.guilds.get('143058431488557056').roles.find('name', 'Monster Hunter');
+      // var guardian = client.guilds.get('143058431488557056').roles.find('name', 'Guardian');
+      var core = client.guilds.get('143058431488557056').roles.find('name', 'Community Member');
+      // var operator = client.guilds.get('143058431488557056').roles.find('name', 'Operator');
+      // var hunter = client.guilds.get('143058431488557056').roles.find('name', 'Monster Hunter');
 
-      member.setRoles([guardian, core, operator, hunter]);
+      member.setRoles([core]);
       logChannel.send('<@'+member.id + '> has joined the server as a member');
     }
   }, 10000);
